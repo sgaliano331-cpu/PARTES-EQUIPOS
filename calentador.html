@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calentador de Agua a Gas - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --ext-c: #7c3aed;
+  --ext-bg: #f5f3ff;
+  --cong-c: #2563eb;
+  --cong-bg: #eff6ff;
+  --refri-c: #059669;
+  --refri-bg: #ecfdf5;
+  --sist-c: #ea580c;
+  --sist-bg: #fff7ed;
+  --seal-c: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    --ext-c: #a78bfa;
+    --ext-bg: #1e1b33;
+    --cong-c: #60a5fa;
+    --cong-bg: #1e293b;
+    --refri-c: #34d399;
+    --refri-bg: #1a2e28;
+    --sist-c: #fb923c;
+    --sist-bg: #2a1f14;
+    --seal-c: #34d399;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  --ext-c: #a78bfa;
+  --ext-bg: #1e1b33;
+  --cong-c: #60a5fa;
+  --cong-bg: #1e293b;
+  --refri-c: #34d399;
+  --refri-bg: #1a2e28;
+  --sist-c: #fb923c;
+  --sist-bg: #2a1f14;
+  --seal-c: #34d399;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab:hover { border-color: var(--border-h); }
+.tab.on[data-k="e"] { background: var(--ext-bg); border-color: var(--ext-c); color: var(--ext-c); }
+.tab.on[data-k="c"] { background: var(--cong-bg); border-color: var(--cong-c); color: var(--cong-c); }
+.tab.on[data-k="r"] { background: var(--refri-bg); border-color: var(--refri-c); color: var(--refri-c); }
+.tab.on[data-k="s"] { background: var(--sist-bg); border-color: var(--sist-c); color: var(--sist-c); }
+.diagram { width: 100%; max-width: 520px; margin: 0 auto 20px auto; }
+.cards { display: flex; flex-direction: column; gap: 6px; }
+.card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card:hover, .card.on { border-color: var(--accent); background: var(--accent-bg); }
+.card-head { display: flex; align-items: center; gap: 10px; }
+.badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; color: var(--fg); }
+.card-desc {
+  font-size: 12.5px;
+  color: var(--fg2);
+  margin-top: 6px;
+  padding-left: 36px;
+  line-height: 1.55;
+}
+.mg { cursor: pointer; transition: opacity 0.2s; }
+.mg.dim { opacity: 0.1; }
+.mg.glow circle.mk { filter: drop-shadow(0 0 8px currentColor); }
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M4 10h16"/><circle cx="12" cy="6" r="1"/><circle cx="12" cy="15" r="1"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Calentador de Agua a Gas — Partes y componentes</h1>
+  <p>Guia tecnica para tecnicos especializados · 20 componentes</p>
+</div>
+
+<div class="tabs" id="tb"></div>
+
+<div class="diagram">
+<svg width="100%" viewBox="0 0 400 560" role="img">
+<title>Calentador de agua a gas con partes numeradas</title>
+<desc>Diagrama tecnico de calentador de paso instantaneo para tecnicos</desc>
+
+<!-- Wall background -->
+<rect x="0" y="0" width="400" height="560" rx="0" fill="none"/>
+<rect x="60" y="10" width="280" height="20" rx="2" fill="#A0A8B0" stroke="#808890" stroke-width="0.8"/>
+<text x="200" y="24" text-anchor="middle" font-size="7" fill="#606870" font-family="Inter, sans-serif">PARED</text>
+
+<!-- Wall mounting bracket -->
+<rect x="140" y="30" width="120" height="8" rx="2" fill="#808890" stroke="#687078" stroke-width="0.8"/>
+<circle cx="165" cy="34" r="3" fill="#606870"/>
+<circle cx="235" cy="34" r="3" fill="#606870"/>
+
+<!-- Main body / carcasa -->
+<rect x="120" y="38" width="160" height="340" rx="6" fill="#CDD2D8" stroke="#A0A8B0" stroke-width="1.5"/>
+<!-- Side shading -->
+<rect x="120" y="38" width="8" height="340" rx="3" fill="#DEE2E8" opacity="0.6"/>
+<rect x="274" y="38" width="5" height="340" rx="2" fill="#B0B8C0" opacity="0.4"/>
+
+<!-- Exhaust duct / ducto evacuacion top -->
+<rect x="175" y="10" width="50" height="32" rx="2" fill="#98A0A8" stroke="#788088" stroke-width="0.8"/>
+<rect x="180" y="10" width="40" height="28" rx="1" fill="none" stroke="#687078" stroke-width="0.4"/>
+<!-- Exhaust flue lines -->
+<line x1="185" y1="14" x2="185" y2="34" stroke="#687078" stroke-width="0.4"/>
+<line x1="195" y1="14" x2="195" y2="34" stroke="#687078" stroke-width="0.4"/>
+<line x1="205" y1="14" x2="205" y2="34" stroke="#687078" stroke-width="0.4"/>
+<line x1="215" y1="14" x2="215" y2="34" stroke="#687078" stroke-width="0.4"/>
+
+<!-- Display panel / panel de control -->
+<rect x="155" y="55" width="90" height="50" rx="4" fill="#404850" stroke="#303840" stroke-width="0.8"/>
+<rect x="162" y="62" width="76" height="22" rx="2" fill="#1a2a3a"/>
+<!-- Digital display text -->
+<text x="200" y="78" text-anchor="middle" font-size="12" fill="#4FC3F7" font-family="Inter, sans-serif" font-weight="700">42°C</text>
+<!-- Buttons on panel -->
+<circle cx="175" cy="96" r="4" fill="#586068" stroke="#485058" stroke-width="0.5"/>
+<circle cx="200" cy="96" r="4" fill="#586068" stroke="#485058" stroke-width="0.5"/>
+<circle cx="225" cy="96" r="4" fill="#586068" stroke="#485058" stroke-width="0.5"/>
+
+<!-- Knobs / Perillas -->
+<circle cx="155" cy="125" r="10" fill="#606870" stroke="#505860" stroke-width="0.8"/>
+<circle cx="155" cy="125" r="4" fill="#485058"/>
+<line x1="155" y1="125" x2="155" y2="117" stroke="#A0A8B0" stroke-width="1.5"/>
+<circle cx="245" cy="125" r="10" fill="#606870" stroke="#505860" stroke-width="0.8"/>
+<circle cx="245" cy="125" r="4" fill="#485058"/>
+<line x1="245" y1="125" x2="249" y2="118" stroke="#A0A8B0" stroke-width="1.5"/>
+<text x="155" y="142" text-anchor="middle" font-size="6" fill="#7888A0" font-family="Inter, sans-serif">GAS</text>
+<text x="245" y="142" text-anchor="middle" font-size="6" fill="#7888A0" font-family="Inter, sans-serif">AGUA</text>
+
+<!-- Combustion chamber area -->
+<rect x="135" y="155" width="130" height="120" rx="3" fill="#BFC5CC" stroke="#9098A0" stroke-width="0.6"/>
+<rect x="140" y="160" width="120" height="110" rx="2" fill="var(--bg-card)" opacity="0.3"/>
+
+<!-- Burner (quemador) -->
+<rect x="145" y="240" width="110" height="16" rx="2" fill="#505860" stroke="#404850" stroke-width="0.6"/>
+<!-- Flame slots -->
+<rect x="152" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="162" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="172" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="182" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="192" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="202" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="212" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="222" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="232" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+<rect x="242" y="242" width="3" height="12" rx="1" fill="#FF8F00" opacity="0.7"/>
+
+<!-- Flames above burner -->
+<path d="M155 240 Q157 228 155 220 Q153 228 155 240Z" fill="#FF6F00" opacity="0.5"/>
+<path d="M175 240 Q178 225 175 215 Q172 225 175 240Z" fill="#FF6F00" opacity="0.5"/>
+<path d="M195 240 Q198 226 195 218 Q192 226 195 240Z" fill="#FF6F00" opacity="0.5"/>
+<path d="M215 240 Q218 228 215 220 Q212 228 215 240Z" fill="#FF6F00" opacity="0.5"/>
+<path d="M235 240 Q238 228 235 222 Q232 228 235 240Z" fill="#FF6F00" opacity="0.5"/>
+
+<!-- Heat exchanger / intercambiador (serpentin) above flames -->
+<path d="M148 175 L252 175 L252 182 L148 182 L148 189 L252 189 L252 196 L148 196 L148 203 L252 203 L252 210 L148 210" fill="none" stroke="#C06000" stroke-width="2.5" opacity="0.7"/>
+
+<!-- Pilot / ignition electrode -->
+<circle cx="152" cy="256" r="2.5" fill="#FFD54F" stroke="#FF8F00" stroke-width="0.5"/>
+<line x1="152" y1="258" x2="152" y2="265" stroke="#808890" stroke-width="0.8"/>
+
+<!-- Electronic control board area -->
+<rect x="135" y="285" width="130" height="45" rx="3" fill="#404850" stroke="#303840" stroke-width="0.6"/>
+<rect x="140" y="290" width="50" height="35" rx="2" fill="#2a3a2a" stroke="#3a4a3a" stroke-width="0.4"/>
+<!-- PCB components -->
+<rect x="144" y="294" width="12" height="6" rx="1" fill="#586068"/>
+<rect x="160" y="294" width="8" height="8" rx="0.5" fill="#404850" stroke="#586068" stroke-width="0.3"/>
+<circle cx="150" cy="310" r="3" fill="#586068"/>
+<circle cx="162" cy="310" r="2" fill="#FF5252" opacity="0.6"/>
+<!-- Wiring -->
+<line x1="192" y1="300" x2="220" y2="300" stroke="#4FC3F7" stroke-width="0.6"/>
+<line x1="192" y1="307" x2="230" y2="307" stroke="#FF8F00" stroke-width="0.6"/>
+<line x1="192" y1="314" x2="240" y2="314" stroke="#66BB6A" stroke-width="0.6"/>
+<text x="200" y="325" text-anchor="middle" font-size="6" fill="#7888A0" font-family="Inter, sans-serif">TARJETA</text>
+
+<!-- Bottom cover / cubierta inferior -->
+<rect x="120" y="340" width="160" height="38" rx="3" fill="#BFC5CC" stroke="#9098A0" stroke-width="0.8"/>
+<line x1="130" y1="359" x2="270" y2="359" stroke="#A0A8B0" stroke-width="0.4"/>
+
+<!-- Water pipes coming from bottom -->
+<!-- Cold water IN (blue) - left -->
+<rect x="145" y="378" width="14" height="80" rx="3" fill="#4488CC" stroke="#3070AA" stroke-width="0.8"/>
+<text x="152" y="430" text-anchor="middle" font-size="6" fill="#fff" font-family="Inter, sans-serif" transform="rotate(-90 152 430)">FRIA</text>
+<!-- Hot water OUT (red) - right -->
+<rect x="195" y="378" width="14" height="80" rx="3" fill="#E05050" stroke="#C03030" stroke-width="0.8"/>
+<text x="202" y="430" text-anchor="middle" font-size="6" fill="#fff" font-family="Inter, sans-serif" transform="rotate(-90 202 430)">CALIENTE</text>
+<!-- Gas pipe (yellow) - far right -->
+<rect x="240" y="378" width="12" height="80" rx="3" fill="#FFD54F" stroke="#E0B030" stroke-width="0.8"/>
+<text x="246" y="432" text-anchor="middle" font-size="6" fill="#606870" font-family="Inter, sans-serif" transform="rotate(-90 246 432)">GAS</text>
+
+<!-- Water body / membrane inside -->
+<ellipse cx="165" cy="365" rx="16" ry="8" fill="#4488CC" stroke="#3070AA" stroke-width="0.6" opacity="0.5"/>
+
+<!-- Venturi / flow sensor -->
+<rect x="148" y="350" width="10" height="14" rx="2" fill="#808890" stroke="#606870" stroke-width="0.5"/>
+
+<!-- Gas valve -->
+<rect x="237" y="350" width="18" height="18" rx="3" fill="#C0A030" stroke="#A08820" stroke-width="0.6"/>
+<circle cx="246" cy="359" r="4" fill="#A08820"/>
+
+<!-- Water valve -->
+<rect x="192" y="348" width="16" height="14" rx="2" fill="#808890" stroke="#606870" stroke-width="0.5"/>
+
+<!-- Temperature sensor -->
+<line x1="265" y1="195" x2="275" y2="195" stroke="#808890" stroke-width="1.2"/>
+<circle cx="268" cy="195" r="3" fill="#FF5252" stroke="#E03030" stroke-width="0.5"/>
+
+<!-- Flame sensor -->
+<line x1="165" y1="258" x2="165" y2="268" stroke="#808890" stroke-width="0.8"/>
+<rect x="162" y="268" width="6" height="4" rx="1" fill="#C0C8D0" stroke="#808890" stroke-width="0.4"/>
+
+<!-- Air pressure switch -->
+<rect x="260" y="155" width="14" height="14" rx="7" fill="#808890" stroke="#606870" stroke-width="0.5"/>
+<circle cx="267" cy="162" r="3" fill="#606870"/>
+
+<!-- Overheat safety valve indicator -->
+<rect x="130" y="275" width="10" height="8" rx="2" fill="#FF5252" stroke="#E03030" stroke-width="0.5"/>
+
+<!-- Markers -->
+<g id="mk">
+<!-- Exterior tab markers (e, 0-4) -->
+<g class="mg" data-s="e" data-i="0"><line x1="280" y1="80" x2="310" y2="80" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="80" r="9" fill="var(--ext-c)"/><text x="320" y="84" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">1</text></g>
+<g class="mg" data-s="e" data-i="1"><line x1="246" y1="75" x2="310" y2="55" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="52" r="9" fill="var(--ext-c)"/><text x="320" y="56" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">2</text></g>
+<g class="mg" data-s="e" data-i="2"><line x1="120" y1="125" x2="80" y2="125" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="125" r="9" fill="var(--ext-c)"/><text x="70" y="129" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">3</text></g>
+<g class="mg" data-s="e" data-i="3"><line x1="200" y1="10" x2="310" y2="18" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="19" r="9" fill="var(--ext-c)"/><text x="320" y="23" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">4</text></g>
+<g class="mg" data-s="e" data-i="4"><line x1="120" y1="359" x2="80" y2="359" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="359" r="9" fill="var(--ext-c)"/><text x="70" y="363" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">5</text></g>
+
+<!-- Sistema hidraulico tab markers (c, 0-4) -->
+<g class="mg" data-s="c" data-i="0"><line x1="145" y1="420" x2="80" y2="420" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="420" r="9" fill="var(--cong-c)"/><text x="70" y="424" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">6</text></g>
+<g class="mg" data-s="c" data-i="1"><line x1="209" y1="420" x2="310" y2="420" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="420" r="9" fill="var(--cong-c)"/><text x="320" y="424" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">7</text></g>
+<g class="mg" data-s="c" data-i="2"><line x1="165" y1="365" x2="80" y2="388" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="391" r="9" fill="var(--cong-c)"/><text x="70" y="395" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">8</text></g>
+<g class="mg" data-s="c" data-i="3"><line x1="153" y1="350" x2="80" y2="340" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="337" r="9" fill="var(--cong-c)"/><text x="70" y="341" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">9</text></g>
+<g class="mg" data-s="c" data-i="4"><line x1="200" y1="348" x2="310" y2="348" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="348" r="9" fill="var(--cong-c)"/><text x="320" y="352" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">10</text></g>
+
+<!-- Sistema de gas tab markers (r, 0-4) -->
+<g class="mg" data-s="r" data-i="0"><line x1="252" y1="430" x2="310" y2="450" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="453" r="9" fill="var(--refri-c)"/><text x="320" y="457" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">11</text></g>
+<g class="mg" data-s="r" data-i="1"><line x1="255" y1="359" x2="310" y2="380" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="383" r="9" fill="var(--refri-c)"/><text x="320" y="387" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">12</text></g>
+<g class="mg" data-s="r" data-i="2"><line x1="200" y1="256" x2="310" y2="265" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="267" r="9" fill="var(--refri-c)"/><text x="320" y="271" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">13</text></g>
+<g class="mg" data-s="r" data-i="3"><line x1="152" y1="256" x2="80" y2="256" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="256" r="9" fill="var(--refri-c)"/><text x="70" y="260" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">14</text></g>
+<g class="mg" data-s="r" data-i="4"><line x1="152" y1="265" x2="80" y2="280" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="283" r="9" fill="var(--refri-c)"/><text x="70" y="287" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">15</text></g>
+
+<!-- Seguridad y control tab markers (s, 0-4) -->
+<g class="mg" data-s="s" data-i="0"><line x1="275" y1="195" x2="310" y2="170" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="167" r="9" fill="var(--sist-c)"/><text x="320" y="171" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">16</text></g>
+<g class="mg" data-s="s" data-i="1"><line x1="165" y1="270" x2="80" y2="310" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="313" r="9" fill="var(--sist-c)"/><text x="70" y="317" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">17</text></g>
+<g class="mg" data-s="s" data-i="2"><line x1="130" y1="279" x2="80" y2="215" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="211" r="9" fill="var(--sist-c)"/><text x="70" y="215" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">18</text></g>
+<g class="mg" data-s="s" data-i="3"><line x1="274" y1="162" x2="310" y2="132" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="129" r="9" fill="var(--sist-c)"/><text x="320" y="133" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">19</text></g>
+<g class="mg" data-s="s" data-i="4"><line x1="200" y1="310" x2="310" y2="310" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="310" r="9" fill="var(--sist-c)"/><text x="320" y="314" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">20</text></g>
+</g>
+</svg>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+const D={
+e:{l:'Exterior',c:'var(--ext-c)',p:[
+{n:1,t:'Carcasa frontal',d:'Cubierta metalica exterior del equipo, generalmente de acero galvanizado o laminado en frio con pintura electrostatica. Protege los componentes internos del agua y polvo. Si presenta corrosion: lijar, aplicar anticorrosivo y pintura termica. Verificar que las rejillas de ventilacion no esten obstruidas.'},
+{n:2,t:'Panel de control / display',d:'Pantalla LCD o LED que muestra la temperatura del agua, codigo de error y estado de operacion. En modelos digitales tiene botones tactiles para ajuste de temperatura (35-60°C). Si no enciende: verificar alimentacion 120V/pilas y fusible de la tarjeta. Codigos de error comunes: E1 (sin ignicion), E2 (sobrecalentamiento), E4 (falta de llama).'},
+{n:3,t:'Perillas de regulacion',d:'Controles rotativos para ajustar flujo de gas y caudal de agua. La perilla de gas regula la potencia del quemador (baja/media/alta). La de agua controla el volumen de paso. Si gotea por el eje: cambiar o-ring interno. Si gira sin tope: resorte de retencion roto. Posicion "piloto" en modelos con llama permanente.'},
+{n:4,t:'Ducto de evacuacion de gases',d:'Tubo de aluminio o acero inoxidable (diametro 80-110mm) que expulsa gases de combustion (CO, CO2, vapor) al exterior. NUNCA debe descargar dentro de la vivienda. Longitud maxima: 3m con maximo 2 codos de 90°. Verificar que no haya obstrucciones (nidos, sarro). Pendiente minima: 3% ascendente hacia la salida.'},
+{n:5,t:'Cubierta inferior',d:'Tapa inferior removible que cubre las conexiones de agua fria, caliente y gas. Permite acceso a valvulas y tuberias para mantenimiento. Se retira con 2-4 tornillos o clips. Verificar que los empaques de las conexiones no tengan fugas. En modelos tipo balcon, protege del viento la llama piloto.'}
+]},
+c:{l:'Sist. hidraulico',c:'var(--cong-c)',p:[
+{n:6,t:'Entrada de agua fria',d:'Conexion inferior izquierda (generalmente marcada con anillo azul). Rosca de 1/2" NPT o BSP. Presion de trabajo: 0.5-8 bar (7-116 PSI). Si la presion es menor a 0.3 bar el equipo no enciende. Instalar llave de paso y filtro tipo Y antes de la entrada para atrapar sedimentos. Verificar que la manguera flexible no este doblada.'},
+{n:7,t:'Salida de agua caliente',d:'Conexion inferior derecha (marcada con anillo rojo). Misma rosca 1/2". Temperatura de salida: 35-60°C segun ajuste. Si el agua sale tibia: caudal excesivo, quemador sucio o intercambiador con sarro. Caudal tipico: 6-16 litros/minuto segun modelo. No usar cinta teflon en exceso para evitar obstruccion.'},
+{n:8,t:'Cuerpo de agua (membrana)',d:'Diafragma de caucho o silicona dentro de la caja de agua que detecta el paso de flujo. Al abrirse la llave, la presion deforma la membrana y activa la valvula de gas. Vida util: 3-5 anos. Si no enciende al abrir agua: membrana rota, perforada o endurecida. Repuesto economico pero critico. Verificar que no tenga depositos de cal.'},
+{n:9,t:'Venturi (sensor de flujo)',d:'Tubo estrecho que acelera el agua para crear diferencial de presion y activar el encendido. Caudal minimo de activacion: 2-3 L/min. Si no enciende con poca presion: limpiar el venturi con vinagre para remover sarro. Algunos modelos usan sensor de efecto Hall (electronico) en vez de venturi mecanico.'},
+{n:10,t:'Valvula de agua',d:'Controla el paso de agua y la modulacion de flujo. Conectada mecanicamente con la membrana. Si gotea: sellos internos desgastados. Si no corta el agua al cerrar la llave: resorte de retorno debil o eje trabado. En modelos electronicos, es un servomotor que regula caudal segun temperatura deseada.'}
+]},
+r:{l:'Sist. gas',c:'var(--refri-c)',p:[
+{n:11,t:'Entrada de gas',d:'Conexion inferior (marcada en amarillo). Rosca 1/2" con llave de paso externa obligatoria. Presion de gas natural: 18-22 mbar. Gas propano (GLP): 28-37 mbar. SIEMPRE verificar con manometro antes de encender. Si hay olor a gas: cerrar llave, ventilar y buscar fuga con agua jabonosa (NUNCA con llama). Verificar que el tipo de gas coincida con la calibracion del equipo.'},
+{n:12,t:'Valvula de gas principal',d:'Solenoide electromagnetica que abre/cierra el suministro de gas al quemador. Voltaje: 3VDC (pilas) o 120VAC segun modelo. Si no abre: verificar alimentacion con multimetro, bobina debe tener 3-15 ohmios. Si se queda abierta (peligroso): reemplazar inmediatamente. En modelos modulantes, tiene motor paso a paso para regular potencia.'},
+{n:13,t:'Quemador principal',d:'Barra o conjunto de tubos perforados donde se mezcla gas con aire y se produce la combustion. Llama azul = combustion correcta. Llama amarilla/naranja = falta aire o quemador sucio. Potencia: 12,000-40,000 BTU segun modelo. Limpiar orificios con cepillo de bronce y aire comprimido cada 6-12 meses. Si se tapa: produce CO peligroso.'},
+{n:14,t:'Quemador piloto / encendido electronico',d:'Modelos con piloto: llama pequeña permanente que enciende el quemador principal. Consume ~500 BTU/h. Si se apaga frecuentemente: termopar desgastado o corriente de aire. Modelos con encendido electronico: generan chispa solo al detectar flujo de agua. Mas eficientes. Usan pilas 1.5V (2xD) o hidrogenador. Si no produce chispa: pilas agotadas o electrodo sucio.'},
+{n:15,t:'Electrodo de ignicion / ionizacion',d:'Pieza ceramica con punta metalica. Genera chispa de alto voltaje (10-15kV) para encender el gas. El mismo electrodo o uno separado detecta la llama por ionizacion (microamperios). Si no enciende: limpiar punta con lija fina 400, gap correcto 3-4mm. Si enciende pero se apaga: electrodo de ionizacion sucio o cable de alta tension danado. Verificar aislamiento ceramico sin fisuras.'}
+]},
+s:{l:'Seguridad',c:'var(--sist-c)',p:[
+{n:16,t:'Sensor de temperatura (termistor)',d:'Sensor NTC montado en la salida del intercambiador. Mide temperatura del agua en tiempo real. Resistencia tipica: 50kΩ a 25°C, baja a ~5kΩ a 80°C. Si el agua sale demasiado caliente o fria sin razon: medir con multimetro y comparar tabla del fabricante. Si esta abierto o en corto: la tarjeta muestra error E2/E3 y bloquea el equipo.'},
+{n:17,t:'Sensor de llama',d:'Varilla metalica dentro de la llama que detecta ionizacion. Corriente normal: 1-3 microamperios. Si la llama existe pero el sensor no la detecta: limpiar con lija fina y verificar conexion a masa (tierra). Si la corriente es <0.5µA, la tarjeta corta el gas por seguridad en 5-10 segundos. En modelos con piloto: se usa termopar (genera 20-30mV por calor).'},
+{n:18,t:'Valvula de seguridad por sobrecalentamiento',d:'Interruptor bimetalico o fusible termico que corta el gas si la temperatura supera 90-95°C. Protege contra explosion o deformacion del intercambiador. Si se dispara frecuentemente: intercambiador con sarro (reduce transferencia termica), flujo de agua muy bajo, o gas mal regulado. Algunos son rearmables (boton reset), otros son fusibles de un solo uso (reemplazar).'},
+{n:19,t:'Interruptor de flujo de aire (presostato)',d:'Sensor de presion diferencial que verifica la correcta evacuacion de gases. Conectado al ducto de salida mediante manguera. Si no hay tiro suficiente: bloquea el encendido (seguridad anti-CO). Presion de activacion: 1-3 Pa. Si el equipo no enciende y el presostato no cierra: ducto obstruido, ventilador de tiro forzado fallando, o manguera del sensor desconectada/rota.'},
+{n:20,t:'Tarjeta electronica de control',d:'PCB principal que coordina encendido, modulacion de llama, lectura de sensores y protecciones. Alimentacion: pilas (3VDC) o 120VAC. Si muestra codigos de error: consultar manual del modelo especifico. Fallas comunes: triac quemado (no enciende chispa), relay pegado (gas no abre), capacitor hinchado. No reparar si hay quemaduras visibles en la placa. Proteger de humedad con spray dielelectrico.'}
+]}
+};
+const K=['e','c','r','s'];
+let cur='e';
+function init(){
+document.getElementById('tb').innerHTML=K.map(k=>'<button class="tab'+(k===cur?' on':'')+'" data-k="'+k+'" onclick="sh(\''+k+'\')">'+D[k].l+'</button>').join('');
+sh('e');
+}
+function sh(k){
+cur=k;
+document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',K[i]===k)});
+const c=document.getElementById('cards');
+const s=D[k];
+c.innerHTML=s.p.map((p,i)=>'<div class="card" ontouchstart="hi(\''+k+'\','+i+')" ontouchend="lo()" onmouseenter="hi(\''+k+'\','+i+')" onmouseleave="lo()"><div class="card-head"><span class="badge" style="background:'+s.c+'">'+p.n+'</span><span class="card-title">'+p.t+'</span></div><div class="card-desc">'+p.d+'</div></div>').join('');
+lo();
+}
+function hi(k,i){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===k&&parseInt(g.dataset.i)===i){g.classList.remove('dim');g.classList.add('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+function lo(){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===cur){g.classList.remove('dim');g.classList.remove('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+init();
+</script>
+
+<div style="text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+  <a href="nevera.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Ver Nevera
+  </a>
+  <a href="lavadora.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    Ver Lavadora
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horno de Cocina - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --ext-c: #7c3aed;
+  --ext-bg: #f5f3ff;
+  --cong-c: #2563eb;
+  --cong-bg: #eff6ff;
+  --refri-c: #059669;
+  --refri-bg: #ecfdf5;
+  --sist-c: #ea580c;
+  --sist-bg: #fff7ed;
+  --seal-c: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    --ext-c: #a78bfa;
+    --ext-bg: #1e1b33;
+    --cong-c: #60a5fa;
+    --cong-bg: #1e293b;
+    --refri-c: #34d399;
+    --refri-bg: #1a2e28;
+    --sist-c: #fb923c;
+    --sist-bg: #2a1f14;
+    --seal-c: #34d399;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  --ext-c: #a78bfa;
+  --ext-bg: #1e1b33;
+  --cong-c: #60a5fa;
+  --cong-bg: #1e293b;
+  --refri-c: #34d399;
+  --refri-bg: #1a2e28;
+  --sist-c: #fb923c;
+  --sist-bg: #2a1f14;
+  --seal-c: #34d399;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab:hover { border-color: var(--border-h); }
+.tab.on[data-k="e"] { background: var(--ext-bg); border-color: var(--ext-c); color: var(--ext-c); }
+.tab.on[data-k="c"] { background: var(--cong-bg); border-color: var(--cong-c); color: var(--cong-c); }
+.tab.on[data-k="r"] { background: var(--refri-bg); border-color: var(--refri-c); color: var(--refri-c); }
+.tab.on[data-k="s"] { background: var(--sist-bg); border-color: var(--sist-c); color: var(--sist-c); }
+.diagram { width: 100%; max-width: 520px; margin: 0 auto 20px auto; }
+.cards { display: flex; flex-direction: column; gap: 6px; }
+.card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card:hover, .card.on { border-color: var(--accent); background: var(--accent-bg); }
+.card-head { display: flex; align-items: center; gap: 10px; }
+.badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; color: var(--fg); }
+.card-desc {
+  font-size: 12.5px;
+  color: var(--fg2);
+  margin-top: 6px;
+  padding-left: 36px;
+  line-height: 1.55;
+}
+.mg { cursor: pointer; transition: opacity 0.2s; }
+.mg.dim { opacity: 0.1; }
+.mg.glow circle.mk { filter: drop-shadow(0 0 8px currentColor); }
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M4 10h16"/><circle cx="12" cy="6" r="1"/><circle cx="12" cy="15" r="1"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Horno de Cocina (Gas) — Partes y componentes</h1>
+  <p>Guia tecnica para tecnicos especializados · 20 componentes</p>
+</div>
+
+<div class="tabs" id="tb"></div>
+
+<div class="diagram">
+<svg width="100%" viewBox="0 0 400 520" role="img">
+<title>Horno de cocina a gas con partes numeradas</title>
+<desc>Diagrama tecnico de horno empotrable a gas para tecnicos</desc>
+
+<!-- Shadow -->
+<ellipse cx="200" cy="505" rx="100" ry="8" fill="var(--border)" opacity="0.25"/>
+
+<!-- Oven body (built-in casing) -->
+<rect x="100" y="20" width="200" height="470" rx="4" fill="#CDD2D8" stroke="#A0A8B0" stroke-width="1.2"/>
+<rect x="100" y="20" width="8" height="470" rx="3" fill="#DEE2E8" opacity="0.6"/>
+<rect x="293" y="20" width="5" height="470" rx="2" fill="#B0B8C0" opacity="0.4"/>
+
+<!-- Control panel top area -->
+<rect x="104" y="24" width="192" height="60" rx="3" fill="#B8BEC6" stroke="#9098A0" stroke-width="0.8"/>
+
+<!-- Knobs row -->
+<circle cx="145" cy="54" r="11" fill="#687078" stroke="#505860" stroke-width="0.8"/>
+<circle cx="145" cy="54" r="4" fill="#505860"/>
+<line x1="145" y1="43" x2="145" y2="47" stroke="#FFD700" stroke-width="1.5"/>
+
+<circle cx="195" cy="54" r="11" fill="#687078" stroke="#505860" stroke-width="0.8"/>
+<circle cx="195" cy="54" r="4" fill="#505860"/>
+<line x1="195" y1="43" x2="195" y2="47" stroke="#FFD700" stroke-width="1.5"/>
+
+<circle cx="245" cy="54" r="11" fill="#687078" stroke="#505860" stroke-width="0.8"/>
+<circle cx="245" cy="54" r="4" fill="#505860"/>
+<line x1="245" y1="43" x2="245" y2="47" stroke="#FFD700" stroke-width="1.5"/>
+
+<!-- Panel label -->
+<rect x="155" y="28" width="90" height="14" rx="2" fill="#505860" opacity="0.6"/>
+<text x="200" y="38" text-anchor="middle" font-size="7" fill="#B0B8C0" font-family="Inter, sans-serif">TEMP / FUNCION</text>
+
+<!-- Oven door frame -->
+<rect x="108" y="90" width="184" height="370" rx="3" fill="#A8B0B8" stroke="#808890" stroke-width="1"/>
+
+<!-- Door (slightly ajar - offset to show depth) -->
+<rect x="112" y="94" width="176" height="362" rx="2" fill="#BFC5CC" stroke="#9098A0" stroke-width="0.8"/>
+
+<!-- Door handle -->
+<rect x="130" y="100" width="140" height="8" rx="4" fill="#808890" stroke="#687078" stroke-width="0.8"/>
+<rect x="135" y="101" width="130" height="3" rx="1.5" fill="#98A0A8" opacity="0.6"/>
+
+<!-- Glass window on door (double tempered glass) -->
+<rect x="125" y="118" width="150" height="200" rx="3" fill="#2a3a4a" opacity="0.35" stroke="#687078" stroke-width="0.6"/>
+<rect x="130" y="123" width="140" height="190" rx="2" fill="#1a2a3a" opacity="0.2"/>
+
+<!-- Inner glass reflection -->
+<line x1="135" y1="128" x2="175" y2="128" stroke="#98A8B8" stroke-width="0.5" opacity="0.4"/>
+<line x1="135" y1="133" x2="160" y2="133" stroke="#98A8B8" stroke-width="0.3" opacity="0.3"/>
+
+<!-- Through glass: interior shelves visible -->
+<line x1="138" y1="175" x2="262" y2="175" stroke="#7888A0" stroke-width="1" opacity="0.5"/>
+<line x1="138" y1="230" x2="262" y2="230" stroke="#7888A0" stroke-width="1" opacity="0.5"/>
+<line x1="138" y1="285" x2="262" y2="285" stroke="#7888A0" stroke-width="1" opacity="0.5"/>
+
+<!-- Interior light (small yellow glow) -->
+<rect x="252" y="130" width="8" height="14" rx="2" fill="#FFE066" opacity="0.5"/>
+<circle cx="256" cy="137" r="5" fill="#FFE066" opacity="0.15"/>
+
+<!-- Through glass: bottom burner area -->
+<rect x="138" y="295" width="124" height="12" rx="1" fill="#586068" opacity="0.3"/>
+<circle cx="165" cy="301" r="3" fill="#FF6B35" opacity="0.4"/>
+<circle cx="185" cy="301" r="3" fill="#FF6B35" opacity="0.4"/>
+<circle cx="205" cy="301" r="3" fill="#FF6B35" opacity="0.4"/>
+<circle cx="225" cy="301" r="3" fill="#FF6B35" opacity="0.4"/>
+<circle cx="245" cy="301" r="3" fill="#FF6B35" opacity="0.4"/>
+
+<!-- Through glass: top broiler burner -->
+<rect x="138" y="130" width="110" height="8" rx="1" fill="#586068" opacity="0.25"/>
+<circle cx="155" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+<circle cx="170" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+<circle cx="185" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+<circle cx="200" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+<circle cx="215" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+<circle cx="230" cy="134" r="2.5" fill="#FF6B35" opacity="0.3"/>
+
+<!-- Door seal/gasket (dashed border) -->
+<rect x="110" y="92" width="180" height="366" rx="3" fill="none" stroke="var(--seal-c)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4"/>
+
+<!-- Drip tray at bottom of oven -->
+<rect x="138" y="310" width="124" height="12" rx="1.5" fill="#98A0A8" stroke="#788088" stroke-width="0.5" opacity="0.6"/>
+<text x="200" y="319" text-anchor="middle" font-size="5.5" fill="#586068" font-family="Inter, sans-serif">BANDEJA GRASA</text>
+
+<!-- Hinges on door sides -->
+<rect x="108" y="420" width="6" height="25" rx="1.5" fill="#687078" stroke="#505860" stroke-width="0.5"/>
+<rect x="286" y="420" width="6" height="25" rx="1.5" fill="#687078" stroke="#505860" stroke-width="0.5"/>
+
+<!-- Bottom area: gas connection -->
+<rect x="104" y="465" width="192" height="20" rx="2" fill="#A8B0B8" stroke="#9098A0" stroke-width="0.6"/>
+<circle cx="200" cy="475" r="6" fill="#586068" stroke="#404850" stroke-width="0.6"/>
+<text x="200" y="478" text-anchor="middle" font-size="5" fill="#B0B8C0" font-family="Inter, sans-serif">GAS</text>
+
+<!-- Gas pipe at back/bottom -->
+<line x1="200" y1="481" x2="200" y2="500" stroke="#505860" stroke-width="2.5"/>
+<circle cx="200" cy="500" r="4" fill="#404850" stroke="#303840" stroke-width="0.6"/>
+
+<!-- Ventilation fan icon (cooling) -->
+<circle cx="270" cy="475" r="8" fill="none" stroke="#687078" stroke-width="0.6"/>
+<path d="M270 467 Q275 471 270 475 Q265 471 270 467Z" fill="#687078" opacity="0.5"/>
+<path d="M262 475 Q266 470 270 475 Q266 480 262 475Z" fill="#687078" opacity="0.5"/>
+<path d="M270 483 Q265 479 270 475 Q275 479 270 483Z" fill="#687078" opacity="0.5"/>
+<path d="M278 475 Q274 480 270 475 Q274 470 278 475Z" fill="#687078" opacity="0.5"/>
+
+<!-- Markers -->
+<g id="mk">
+<!-- Tab E: Exterior (1-5) -->
+<g class="mg" data-s="e" data-i="0"><line x1="125" y1="210" x2="72" y2="180" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="176" r="9" fill="var(--ext-c)"/><text x="62" y="180" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">1</text></g>
+<g class="mg" data-s="e" data-i="1"><line x1="200" y1="100" x2="200" y2="12" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="200" cy="8" r="9" fill="var(--ext-c)"/><text x="200" y="12" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">2</text></g>
+<g class="mg" data-s="e" data-i="2"><line x1="296" y1="44" x2="330" y2="34" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="31" r="9" fill="var(--ext-c)"/><text x="340" y="35" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">3</text></g>
+<g class="mg" data-s="e" data-i="3"><line x1="145" y1="65" x2="72" y2="72" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="73" r="9" fill="var(--ext-c)"/><text x="62" y="77" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">4</text></g>
+<g class="mg" data-s="e" data-i="4"><line x1="108" y1="432" x2="72" y2="440" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="442" r="9" fill="var(--ext-c)"/><text x="62" y="446" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">5</text></g>
+
+<!-- Tab C: Interior (6-10) -->
+<g class="mg" data-s="c" data-i="0"><line x1="262" y1="250" x2="330" y2="260" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="262" r="9" fill="var(--cong-c)"/><text x="340" y="266" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">6</text></g>
+<g class="mg" data-s="c" data-i="1"><line x1="262" y1="175" x2="330" y2="150" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="147" r="9" fill="var(--cong-c)"/><text x="340" y="151" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">7</text></g>
+<g class="mg" data-s="c" data-i="2"><line x1="262" y1="316" x2="330" y2="330" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="332" r="9" fill="var(--cong-c)"/><text x="340" y="336" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">8</text></g>
+<g class="mg" data-s="c" data-i="3"><line x1="260" y1="137" x2="330" y2="110" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="107" r="9" fill="var(--cong-c)"/><text x="340" y="111" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">9</text></g>
+<g class="mg" data-s="c" data-i="4"><line x1="112" y1="274" x2="72" y2="280" stroke="var(--seal-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="282" r="9" fill="var(--seal-c)"/><text x="62" y="286" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">10</text></g>
+
+<!-- Tab R: Sistema de gas y calor (11-15) -->
+<g class="mg" data-s="r" data-i="0"><line x1="200" y1="307" x2="72" y2="350" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="352" r="9" fill="var(--refri-c)"/><text x="62" y="356" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">11</text></g>
+<g class="mg" data-s="r" data-i="1"><line x1="200" y1="134" x2="72" y2="134" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="134" r="9" fill="var(--refri-c)"/><text x="62" y="138" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">12</text></g>
+<g class="mg" data-s="r" data-i="2"><line x1="200" y1="481" x2="330" y2="475" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="474" r="9" fill="var(--refri-c)"/><text x="340" y="478" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">13</text></g>
+<g class="mg" data-s="r" data-i="3"><line x1="200" y1="500" x2="330" y2="506" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="508" r="9" fill="var(--refri-c)"/><text x="340" y="512" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">14</text></g>
+<g class="mg" data-s="r" data-i="4"><line x1="206" y1="475" x2="330" y2="440" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="437" r="9" fill="var(--refri-c)"/><text x="340" y="441" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">15</text></g>
+
+<!-- Tab S: Control y seguridad (16-20) -->
+<g class="mg" data-s="s" data-i="0"><line x1="245" y1="54" x2="330" y2="67" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="69" r="9" fill="var(--sist-c)"/><text x="340" y="73" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">16</text></g>
+<g class="mg" data-s="s" data-i="1"><line x1="200" y1="475" x2="72" y2="475" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="62" cy="475" r="9" fill="var(--sist-c)"/><text x="62" y="479" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">17</text></g>
+<g class="mg" data-s="s" data-i="2"><line x1="278" y1="475" x2="330" y2="395" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="392" r="9" fill="var(--sist-c)"/><text x="340" y="396" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">18</text></g>
+<g class="mg" data-s="s" data-i="3"><line x1="296" y1="42" x2="330" y2="8" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="5" r="9" fill="var(--sist-c)"/><text x="340" y="9" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">19</text></g>
+<g class="mg" data-s="s" data-i="4"><line x1="262" y1="230" x2="330" y2="215" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="340" cy="212" r="9" fill="var(--sist-c)"/><text x="340" y="216" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">20</text></g>
+</g>
+</svg>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+const D={
+e:{l:'Exterior',c:'var(--ext-c)',p:[
+{n:1,t:'Puerta con vidrio templado doble',d:'Puerta principal del horno con doble vidrio templado resistente a 300°C+. Reduce la temperatura exterior a menos de 60°C durante operacion. Si el vidrio esta roto o con fisuras: reemplazar inmediatamente por riesgo de quemaduras. Limpiar con limpiador no abrasivo. Verificar que los clips de retencion esten firmes.'},
+{n:2,t:'Manija de puerta',d:'Barra de agarre en acero inoxidable o plastico termoresistente. Soporta temperaturas de superficie hasta 70°C. Si se afloja: revisar los 2-4 tornillos de fijacion traseros accediendo por la cara interior de la puerta. Verificar insertos roscados no barridos.'},
+{n:3,t:'Panel de control',d:'Zona superior con indicadores de temperatura, selector de funcion y timer. En modelos electronicos incluye display LED/LCD. Si el display no enciende: verificar 120/220V en la tarjeta de control y fusible termico. En modelos mecanicos, verificar continuidad del switch selector.'},
+{n:4,t:'Perillas de temperatura/funcion',d:'Controles giratorios que regulan temperatura (150-300°C) y modo de coccion (hornear, gratinar, ambos). Eje conectado a la valvula termostatica mediante varilla. Si gira sin efecto: eje de valvula partido o desacoplado. Si queda dura: acumulacion de grasa en el eje. Limpiar con desengrasante.'},
+{n:5,t:'Bisagras de puerta',d:'Mecanismo de resorte que permite apertura a 90° y retencion parcial. Soportan el peso de la puerta (5-12 kg). Si la puerta no cierra bien: resorte fatigado o roto, reemplazar ambas bisagras al tiempo. Si cierra con golpe: amortiguador desgastado. Lubricar con grasa de alta temperatura.'}
+]},
+c:{l:'Interior',c:'var(--cong-c)',p:[
+{n:6,t:'Cavidad del horno (camara)',d:'Espacio interior esmaltado o de acero inoxidable donde se cocina. Capacidad tipica: 50-80 litros. El esmalte debe estar intacto para reflejar calor uniformemente. Si hay descascaramiento: pierde eficiencia termica y facilita corrosion. Temperatura uniforme ideal: variacion maxima 10°C entre zonas.'},
+{n:7,t:'Parrillas/rejillas ajustables',d:'Estantes de acero cromado o niquelado con 3-5 posiciones de altura. Soportan 8-15 kg. Posicion baja para asados largos, media para horneado general, alta para gratinar. Si estan deformadas por calor: reemplazar. Limpiar con bicarbonato y agua caliente para remover grasa quemada.'},
+{n:8,t:'Bandeja recolectora de grasa',d:'Charola en la base del horno que recoge goteo de grasa y jugos. Previene que la grasa caiga sobre el quemador inferior causando humo y llama. Limpiar despues de cada uso con desengrasante. Si esta deformada o corroida: reemplazar. Usar papel aluminio como protector no es recomendado por riesgo de bloqueo de flujo de aire.'},
+{n:9,t:'Luz interior del horno',d:'Bombilla halógena o incandescente de 15-40W, tipo E14 o G9, resistente a 300°C. Permite ver los alimentos sin abrir la puerta. Si no enciende: verificar bombilla (medir continuidad) y door switch. El vidrio protector debe estar sellado. Desconectar corriente antes de cambiar la bombilla. Usar solo bombillas para horno, las comunes explotan con el calor.'},
+{n:10,t:'Sello/empaque de puerta',d:'Junta de fibra de vidrio trenzada o silicona que rodea la abertura del horno. Sella para mantener calor y evitar fugas de gas caliente. Prueba: con el horno a 200°C, pasar la mano a 2 cm del borde; si siente calor excesivo, reemplazar. Vida util: 3-5 anos. No usar adhesivos comunes, solo los especificados por el fabricante.'}
+]},
+r:{l:'Gas y calor',c:'var(--refri-c)',p:[
+{n:11,t:'Quemador inferior (hornear)',d:'Tubo de acero perforado en la base del horno que produce llama para horneado por conveccion natural. Potencia: 2000-3500W (6000-12000 BTU). Llama ideal: azul uniforme. Si la llama es amarilla o irregular: orificios tapados con residuos de comida, limpiar con cepillo de alambre fino y aire comprimido. Verificar presion de gas: 18-20 mbar (gas natural) o 28-30 mbar (propano).'},
+{n:12,t:'Quemador superior (gratinar/broil)',d:'Tubo perforado en el techo del horno para calor directo desde arriba. Potencia: 1500-2500W. Usado para dorar, gratinar y tostar. Si no enciende: verificar valvula de paso y electrodo de ignicion. La distancia de la llama al alimento debe ser 8-12 cm minimo. No usar en modo broil con puerta cerrada si el manual indica puerta entreabierta.'},
+{n:13,t:'Valvula termostatica',d:'Dispositivo mecanico que regula el flujo de gas segun la temperatura seleccionada. Contiene bulbo sensor con liquido que se expande con el calor. Si la temperatura es imprecisa: calibrar con termometro de horno. Si no corta el gas al alcanzar la temperatura: valvula defectuosa, reemplazar completa. Rango tipico: 140-290°C. Costo pieza: $80-250 USD.'},
+{n:14,t:'Termopar de seguridad',d:'Sensor bimetalico que detecta presencia de llama. Genera 20-30 milivoltios cuando se calienta, manteniendo abierta la valvula de seguridad. Si el horno se apaga solo despues de encender: termopar sucio o defectuoso. Limpiar con lija fina #400. Medir con multimetro en milivoltios: menos de 15mV = reemplazar. Tiempo de respuesta normal: 15-30 segundos.'},
+{n:15,t:'Encendido electronico (ignitor)',d:'Electrodo ceramico que genera chispa de alto voltaje (~15kV) para encender el gas. Si hace click pero no enciende: electrodo sucio o desalineado. Distancia correcta al quemador: 3-5 mm. Si no hace click: modulo de ignicion fallando o cable roto. Limpiar electrodo con alcohol isopropilico. No tocar la punta ceramica con herramientas metalicas.'}
+]},
+s:{l:'Control y seguridad',c:'var(--sist-c)',p:[
+{n:16,t:'Termostato',d:'Control maestro de temperatura del horno. En modelos mecanicos: capilar con bulbo sensor lleno de liquido. En electronicos: tarjeta con sensor NTC/termistor. Resistencia NTC tipica: 50kΩ a 25°C, 2.5kΩ a 200°C. Si la temperatura oscila excesivamente (±30°C): termostato descalibrado o sensor defectuoso. Calibracion: ajustar tornillo en el eje de la perilla.'},
+{n:17,t:'Valvula de seguridad',d:'Dispositivo electromagnetico controlado por el termopar. Corta el flujo de gas automaticamente si la llama se apaga. Bobina de ~500Ω. Si el gas no fluye aunque la perilla esta abierta: bobina quemada o termopar desconectado. Medir continuidad de bobina con multimetro. No puentear nunca esta valvula: riesgo de explosion por acumulacion de gas.'},
+{n:18,t:'Ventilador de enfriamiento',d:'Motor de 10-25W ubicado en la parte superior trasera. Fuerza aire entre la carcasa exterior y la camara del horno para enfriar la superficie externa y los controles electronicos. Se activa al superar 60°C y continua varios minutos despues de apagar. Si no gira: motor quemado o capacitor defectuoso. Si hace ruido: rodamientos desgastados. Medir bobina: 200-400Ω.'},
+{n:19,t:'Timer/temporizador',d:'Mecanismo de relojeria o electronico que controla el tiempo de coccion. En modelos mecanicos: cuerda de 120 minutos con campana. En electronicos: rango de 1 min a 10 horas con alarma. Si el timer mecanico no avanza: engranajes trabados o resorte roto. Si el electronico no programa: verificar alimentacion y micro-switch de contacto. El timer puede cortar energia al horno al finalizar.'},
+{n:20,t:'Sensor de temperatura',d:'Termistor NTC o termopar tipo K que mide la temperatura real dentro de la camara y envia señal a la tarjeta electronica. Ubicado generalmente en la pared superior trasera. Resistencia a 200°C: 1-3 kΩ (depende del modelo). Si muestra error E1/F3 en el display: sensor abierto o en corto. Verificar cableado y conector antes de reemplazar. No doblar el cable sensor bruscamente.'}
+]}
+};
+const K=['e','c','r','s'];
+let cur='e';
+function init(){
+document.getElementById('tb').innerHTML=K.map(k=>'<button class="tab'+(k===cur?' on':'')+'" data-k="'+k+'" onclick="sh(\''+k+'\')">'+D[k].l+'</button>').join('');
+sh('e');
+}
+function sh(k){
+cur=k;
+document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',K[i]===k)});
+const c=document.getElementById('cards');
+const s=D[k];
+c.innerHTML=s.p.map((p,i)=>'<div class="card" ontouchstart="hi(\''+k+'\','+i+')" ontouchend="lo()" onmouseenter="hi(\''+k+'\','+i+')" onmouseleave="lo()"><div class="card-head"><span class="badge" style="background:'+s.c+'">'+p.n+'</span><span class="card-title">'+p.t+'</span></div><div class="card-desc">'+p.d+'</div></div>').join('');
+lo();
+}
+function hi(k,i){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===k&&parseInt(g.dataset.i)===i){g.classList.remove('dim');g.classList.add('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+function lo(){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===cur){g.classList.remove('dim');g.classList.remove('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+init();
+</script>
+
+<div style="text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+  <a href="nevera.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    Ver Nevera
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+  <a href="lavadora.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    Ver Lavadora
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+</div>
+
+</body>
+</html>

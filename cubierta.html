@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cubierta de Cocina - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --ext-c: #7c3aed;
+  --ext-bg: #f5f3ff;
+  --cong-c: #2563eb;
+  --cong-bg: #eff6ff;
+  --refri-c: #059669;
+  --refri-bg: #ecfdf5;
+  --sist-c: #ea580c;
+  --sist-bg: #fff7ed;
+  --seal-c: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    --ext-c: #a78bfa;
+    --ext-bg: #1e1b33;
+    --cong-c: #60a5fa;
+    --cong-bg: #1e293b;
+    --refri-c: #34d399;
+    --refri-bg: #1a2e28;
+    --sist-c: #fb923c;
+    --sist-bg: #2a1f14;
+    --seal-c: #34d399;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  --ext-c: #a78bfa;
+  --ext-bg: #1e1b33;
+  --cong-c: #60a5fa;
+  --cong-bg: #1e293b;
+  --refri-c: #34d399;
+  --refri-bg: #1a2e28;
+  --sist-c: #fb923c;
+  --sist-bg: #2a1f14;
+  --seal-c: #34d399;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab:hover { border-color: var(--border-h); }
+.tab.on[data-k="e"] { background: var(--ext-bg); border-color: var(--ext-c); color: var(--ext-c); }
+.tab.on[data-k="c"] { background: var(--cong-bg); border-color: var(--cong-c); color: var(--cong-c); }
+.tab.on[data-k="r"] { background: var(--refri-bg); border-color: var(--refri-c); color: var(--refri-c); }
+.tab.on[data-k="s"] { background: var(--sist-bg); border-color: var(--sist-c); color: var(--sist-c); }
+.diagram { width: 100%; max-width: 520px; margin: 0 auto 20px auto; }
+.cards { display: flex; flex-direction: column; gap: 6px; }
+.card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card:hover, .card.on { border-color: var(--accent); background: var(--accent-bg); }
+.card-head { display: flex; align-items: center; gap: 10px; }
+.badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; color: var(--fg); }
+.card-desc {
+  font-size: 12.5px;
+  color: var(--fg2);
+  margin-top: 6px;
+  padding-left: 36px;
+  line-height: 1.55;
+}
+.mg { cursor: pointer; transition: opacity 0.2s; }
+.mg.dim { opacity: 0.1; }
+.mg.glow circle.mk { filter: drop-shadow(0 0 8px currentColor); }
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M4 10h16"/><circle cx="12" cy="6" r="1"/><circle cx="12" cy="15" r="1"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Cubierta de Cocina — Partes y componentes</h1>
+  <p>Guia tecnica para tecnicos especializados · 20 componentes</p>
+</div>
+
+<div class="tabs" id="tb"></div>
+
+<div class="diagram">
+<svg width="100%" viewBox="0 0 400 480" role="img">
+<title>Cubierta de cocina con partes numeradas</title>
+<desc>Diagrama tecnico de cubierta de cocina a gas para tecnicos</desc>
+
+<!-- Sombra base -->
+<ellipse cx="200" cy="460" rx="160" ry="12" fill="var(--border)" opacity="0.2"/>
+
+<!-- Perspectiva 3/4: superficie principal de la cubierta -->
+<path d="M40 80 L360 80 L340 320 L60 320 Z" fill="#CDD2D8" stroke="#A0A8B0" stroke-width="1.2"/>
+<!-- Borde biselado superior -->
+<path d="M40 80 L360 80 L355 86 L45 86 Z" fill="#DEE2E8" opacity="0.6"/>
+<!-- Borde biselado izquierdo -->
+<path d="M40 80 L45 86 L63 316 L60 320 Z" fill="#B8BEC6" opacity="0.5"/>
+
+<!-- Marco perimetral -->
+<path d="M50 88 L350 88 L332 312 L68 312 Z" fill="none" stroke="#9098A0" stroke-width="1.5"/>
+
+<!-- Superficie de vidrio templado -->
+<path d="M55 92 L345 92 L328 308 L72 308 Z" fill="#2a2a2e" stroke="#404448" stroke-width="0.8" opacity="0.85"/>
+
+<!-- Quemador trasero izquierdo (grande) -->
+<ellipse cx="145" cy="148" rx="42" ry="28" fill="none" stroke="#606468" stroke-width="1.2"/>
+<ellipse cx="145" cy="148" rx="30" ry="20" fill="none" stroke="#505458" stroke-width="0.8"/>
+<ellipse cx="145" cy="148" rx="16" ry="11" fill="none" stroke="#707478" stroke-width="1"/>
+<ellipse cx="145" cy="148" rx="6" ry="4" fill="#484c50"/>
+<!-- Corona quemador -->
+<g opacity="0.6">
+<line x1="133" y1="140" x2="129" y2="137" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="140" y1="136" x2="138" y2="132" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="150" y1="136" x2="152" y2="132" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="157" y1="140" x2="161" y2="137" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+
+<!-- Parrilla quemador trasero izquierdo -->
+<line x1="108" y1="138" x2="182" y2="138" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="110" y1="148" x2="180" y2="148" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="108" y1="158" x2="182" y2="158" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+
+<!-- Quemador trasero derecho (pequeno) -->
+<ellipse cx="265" cy="148" rx="34" ry="23" fill="none" stroke="#606468" stroke-width="1.2"/>
+<ellipse cx="265" cy="148" rx="22" ry="15" fill="none" stroke="#505458" stroke-width="0.8"/>
+<ellipse cx="265" cy="148" rx="10" ry="7" fill="none" stroke="#707478" stroke-width="1"/>
+<ellipse cx="265" cy="148" rx="5" ry="3.5" fill="#484c50"/>
+
+<!-- Parrilla quemador trasero derecho -->
+<line x1="236" y1="138" x2="294" y2="138" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="236" y1="148" x2="294" y2="148" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="236" y1="158" x2="294" y2="158" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+
+<!-- Quemador delantero izquierdo (mediano) -->
+<ellipse cx="150" cy="240" rx="38" ry="26" fill="none" stroke="#606468" stroke-width="1.2"/>
+<ellipse cx="150" cy="240" rx="26" ry="18" fill="none" stroke="#505458" stroke-width="0.8"/>
+<ellipse cx="150" cy="240" rx="13" ry="9" fill="none" stroke="#707478" stroke-width="1"/>
+<ellipse cx="150" cy="240" rx="5" ry="3.5" fill="#484c50"/>
+
+<!-- Parrilla quemador delantero izquierdo -->
+<line x1="116" y1="230" x2="184" y2="230" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="116" y1="240" x2="184" y2="240" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="116" y1="250" x2="184" y2="250" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+
+<!-- Quemador delantero derecho (grande) -->
+<ellipse cx="260" cy="240" rx="42" ry="28" fill="none" stroke="#606468" stroke-width="1.2"/>
+<ellipse cx="260" cy="240" rx="30" ry="20" fill="none" stroke="#505458" stroke-width="0.8"/>
+<ellipse cx="260" cy="240" rx="16" ry="11" fill="none" stroke="#707478" stroke-width="1"/>
+<ellipse cx="260" cy="240" rx="6" ry="4" fill="#484c50"/>
+
+<!-- Parrilla quemador delantero derecho -->
+<line x1="222" y1="230" x2="298" y2="230" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="222" y1="240" x2="298" y2="240" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+<line x1="222" y1="250" x2="298" y2="250" stroke="#58585c" stroke-width="3" stroke-linecap="round"/>
+
+<!-- Electrodos de chispa (puntos blancos junto a quemadores) -->
+<circle cx="125" cy="138" r="2.5" fill="#E0E0E0" stroke="#999" stroke-width="0.5"/>
+<circle cx="248" cy="138" r="2.5" fill="#E0E0E0" stroke="#999" stroke-width="0.5"/>
+<circle cx="130" cy="230" r="2.5" fill="#E0E0E0" stroke="#999" stroke-width="0.5"/>
+<circle cx="240" cy="230" r="2.5" fill="#E0E0E0" stroke="#999" stroke-width="0.5"/>
+
+<!-- Termopares (puntos rojos junto a quemadores) -->
+<circle cx="165" cy="162" r="2" fill="#CC4444" stroke="#993333" stroke-width="0.5"/>
+<circle cx="280" cy="158" r="2" fill="#CC4444" stroke="#993333" stroke-width="0.5"/>
+<circle cx="168" cy="252" r="2" fill="#CC4444" stroke="#993333" stroke-width="0.5"/>
+<circle cx="278" cy="252" r="2" fill="#CC4444" stroke="#993333" stroke-width="0.5"/>
+
+<!-- Panel frontal con perillas -->
+<path d="M60 320 L340 320 L345 360 L55 360 Z" fill="#B0B6BE" stroke="#9098A0" stroke-width="1"/>
+<!-- Detalle borde frontal -->
+<path d="M55 360 L345 360 L343 365 L57 365 Z" fill="#A0A6AE" stroke="#8890A0" stroke-width="0.5"/>
+
+<!-- Perilla 1 -->
+<circle cx="120" cy="340" r="12" fill="#686c70" stroke="#505458" stroke-width="1"/>
+<circle cx="120" cy="340" r="8" fill="#787c80"/>
+<line x1="120" y1="332" x2="120" y2="336" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- Perilla 2 -->
+<circle cx="180" cy="340" r="12" fill="#686c70" stroke="#505458" stroke-width="1"/>
+<circle cx="180" cy="340" r="8" fill="#787c80"/>
+<line x1="180" y1="332" x2="180" y2="336" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- Perilla 3 -->
+<circle cx="240" cy="340" r="12" fill="#686c70" stroke="#505458" stroke-width="1"/>
+<circle cx="240" cy="340" r="8" fill="#787c80"/>
+<line x1="240" y1="332" x2="240" y2="336" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- Perilla 4 -->
+<circle cx="300" cy="340" r="12" fill="#686c70" stroke="#505458" stroke-width="1"/>
+<circle cx="300" cy="340" r="8" fill="#787c80"/>
+<line x1="300" y1="332" x2="300" y2="336" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- Parte inferior: conexion de gas -->
+<path d="M80 365 L320 365 L315 420 L85 420 Z" fill="#A0A6AE" stroke="#8890A0" stroke-width="0.8" opacity="0.5"/>
+
+<!-- Manguera de gas -->
+<path d="M200 420 Q200 440 170 445 Q140 450 140 460" fill="none" stroke="#606468" stroke-width="4" stroke-linecap="round"/>
+<!-- Conector manguera -->
+<rect x="133" y="456" width="14" height="8" rx="2" fill="#808488" stroke="#606468" stroke-width="0.5"/>
+
+<!-- Tubo distribuidor interno -->
+<line x1="120" y1="400" x2="300" y2="400" stroke="#707478" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 2"/>
+<!-- Ramificaciones a quemadores -->
+<line x1="150" y1="400" x2="150" y2="385" stroke="#707478" stroke-width="1.5"/>
+<line x1="200" y1="400" x2="200" y2="390" stroke="#707478" stroke-width="1.5"/>
+<line x1="250" y1="400" x2="250" y2="385" stroke="#707478" stroke-width="1.5"/>
+
+<!-- Regulador de presion -->
+<rect x="155" y="438" width="22" height="14" rx="3" fill="#707478" stroke="#505458" stroke-width="0.8"/>
+<text x="166" y="448" text-anchor="middle" font-size="5" fill="#B0B8C0" font-family="Inter, sans-serif">REG</text>
+
+<!-- Charola recolectora (visible por debajo) -->
+<path d="M75 310 L325 310 L320 316 L80 316 Z" fill="none" stroke="#8890A0" stroke-width="0.6" stroke-dasharray="3 2" opacity="0.5"/>
+
+<!-- Marcadores numerados -->
+<g id="mk">
+<!-- Tab Superficie (e): 1-5 -->
+<g class="mg" data-s="e" data-i="0"><line x1="345" y1="200" x2="370" y2="200" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="200" r="9" fill="var(--ext-c)"/><text x="380" y="204" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">1</text></g>
+<g class="mg" data-s="e" data-i="1"><line x1="184" y1="148" x2="370" y2="120" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="118" r="9" fill="var(--ext-c)"/><text x="380" y="122" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">2</text></g>
+<g class="mg" data-s="e" data-i="2"><line x1="145" y1="120" x2="30" y2="105" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="103" r="9" fill="var(--ext-c)"/><text x="20" y="107" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">3</text></g>
+<g class="mg" data-s="e" data-i="3"><line x1="120" y1="328" x2="30" y2="340" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="342" r="9" fill="var(--ext-c)"/><text x="20" y="346" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">4</text></g>
+<g class="mg" data-s="e" data-i="4"><line x1="55" y1="315" x2="30" y2="280" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="275" r="9" fill="var(--ext-c)"/><text x="20" y="279" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">5</text></g>
+
+<!-- Tab Sistema de gas (c): 6-10 -->
+<g class="mg" data-s="c" data-i="0"><line x1="140" y1="460" x2="30" y2="455" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="455" r="9" fill="var(--cong-c)"/><text x="20" y="459" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">6</text></g>
+<g class="mg" data-s="c" data-i="1"><line x1="180" y1="340" x2="370" y2="340" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="340" r="9" fill="var(--cong-c)"/><text x="380" y="344" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">7</text></g>
+<g class="mg" data-s="c" data-i="2"><line x1="145" y1="148" x2="30" y2="160" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="162" r="9" fill="var(--cong-c)"/><text x="20" y="166" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">8</text></g>
+<g class="mg" data-s="c" data-i="3"><line x1="200" y1="400" x2="370" y2="400" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="400" r="9" fill="var(--cong-c)"/><text x="380" y="404" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">9</text></g>
+<g class="mg" data-s="c" data-i="4"><line x1="166" y1="445" x2="370" y2="450" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="451" r="9" fill="var(--cong-c)"/><text x="380" y="455" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">10</text></g>
+
+<!-- Tab Encendido (r): 11-15 -->
+<g class="mg" data-s="r" data-i="0"><line x1="125" y1="138" x2="30" y2="110" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="108" r="9" fill="var(--refri-c)"/><text x="20" y="112" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">11</text></g>
+<g class="mg" data-s="r" data-i="1"><line x1="200" y1="370" x2="370" y2="370" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="370" r="9" fill="var(--refri-c)"/><text x="380" y="374" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">12</text></g>
+<g class="mg" data-s="r" data-i="2"><line x1="125" y1="230" x2="30" y2="220" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="218" r="9" fill="var(--refri-c)"/><text x="20" y="222" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">13</text></g>
+<g class="mg" data-s="r" data-i="3"><line x1="165" y1="162" x2="370" y2="158" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="157" r="9" fill="var(--refri-c)"/><text x="380" y="161" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">14</text></g>
+<g class="mg" data-s="r" data-i="4"><line x1="150" y1="260" x2="30" y2="255" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="254" r="9" fill="var(--refri-c)"/><text x="20" y="258" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">15</text></g>
+
+<!-- Tab Estructura (s): 16-20 -->
+<g class="mg" data-s="s" data-i="0"><line x1="50" y1="88" x2="30" y2="60" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="56" r="9" fill="var(--sist-c)"/><text x="20" y="60" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">16</text></g>
+<g class="mg" data-s="s" data-i="1"><line x1="80" y1="313" x2="30" y2="310" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="20" cy="310" r="9" fill="var(--sist-c)"/><text x="20" y="314" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">17</text></g>
+<g class="mg" data-s="s" data-i="2"><line x1="140" y1="455" x2="370" y2="465" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="466" r="9" fill="var(--sist-c)"/><text x="380" y="470" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">18</text></g>
+<g class="mg" data-s="s" data-i="3"><line x1="200" y1="420" x2="370" y2="430" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="431" r="9" fill="var(--sist-c)"/><text x="380" y="435" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">19</text></g>
+<g class="mg" data-s="s" data-i="4"><line x1="350" y1="88" x2="370" y2="80" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="380" cy="78" r="9" fill="var(--sist-c)"/><text x="380" y="82" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">20</text></g>
+</g>
+</svg>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+const D={
+e:{l:'Superficie',c:'var(--ext-c)',p:[
+{n:1,t:'Cubierta de vidrio templado/acero',d:'Superficie principal de la estufa. Puede ser vidrio templado (resistente a 400°C) o acero inoxidable 304. Vidrio: revisar microfisuras que provoquen quiebre repentino. Acero: verificar que no haya puntos de corrosion. Limpiar con productos no abrasivos. Si la cubierta de vidrio se raya se debilita estructuralmente.'},
+{n:2,t:'Parrillas individuales',d:'Rejillas de hierro fundido o acero esmaltado que soportan ollas sobre el quemador. Peso soportado: 15-25 kg por parrilla. Fallas comunes: esmalte descascarado (oxida rapido), patas de apoyo desgastadas (olla se tambalea). Lavar a mano, nunca en lavavajillas. Verificar nivelacion con nivel de burbuja.'},
+{n:3,t:'Quemadores (corona)',d:'Pieza metalica de aluminio o laton con orificios que distribuyen la llama. Potencia tipica: 1.5 kW (pequeno) a 3.5 kW (triple corona). Si la llama es amarilla o irregular: orificios tapados con residuos de comida. Limpiar con alfiler fino o aire comprimido. La llama ideal es azul con punta minima amarilla.'},
+{n:4,t:'Perillas de control',d:'Regulan el paso de gas de cada quemador. Conectan al vastago de la valvula por acople estriado o pin en D. Si la perilla gira sin resistencia: vastago de la valvula roto o acople barrido. Reemplazar perilla o valvula segun el caso. Marcar posicion MIN/MAX al reinstalar.'},
+{n:5,t:'Base de sellado',d:'Empaque perimetral entre la cubierta y la mesada. Sella para evitar filtracion de liquidos al interior. Material: silicona o caucho EPDM. Si hay infiltracion de agua al modulo electrico: reemplazar inmediatamente. Aplicar sellador de silicona de alta temperatura al reinstalar.'}
+]},
+c:{l:'Sistema de gas',c:'var(--cong-c)',p:[
+{n:6,t:'Entrada de gas principal',d:'Punto de conexion donde la manguera trae gas desde la red o tanque. Rosca estandar 1/2" NPT o 3/8" SAE flare. Presion de trabajo: gas natural 18-25 mbar, GLP 28-37 mbar. SIEMPRE verificar con agua jabonosa que no haya fugas al reconectar. Si hay burbujeo: apretar o cambiar empaque.'},
+{n:7,t:'Valvulas individuales por quemador',d:'Cada perilla controla una valvula de gas independiente. Tipo: valvula conico-axial con asiento de grasa siliconada. Si gotea gas con perilla cerrada: asiento desgastado, reemplazar valvula completa. No intentar rectificar el cono. Verificar hermeticidad con detector de gas o agua jabonosa.'},
+{n:8,t:'Inyectores/boquillas',d:'Pequenos tornillos huecos con orificio calibrado que dosifican el gas al quemador. Diametro critico: GLP 0.65-0.85mm, gas natural 1.15-1.45mm segun potencia. Si se instala inyector incorrecto: llama amarilla (orificio grande) o llama debil con pop (orificio chico). Cambiar con llave de 7mm.'},
+{n:9,t:'Tubo distribuidor de gas',d:'Tuberia interna (cobre o acero) que conecta la entrada de gas con cada valvula individual. Diametro tipico: 8-10mm. Verificar que no tenga fisuras ni corrosion en las soldaduras. En conversion gas natural a GLP: no se modifica el tubo, solo inyectores y regulador.'},
+{n:10,t:'Regulador de presion',d:'Reduce la presion del tanque de gas (alta presion) a presion de trabajo del aparato. GLP: entrada ~1.5 bar, salida 28-37 mbar. Gas natural: generalmente no requiere regulador individual. Vida util: 5-10 anos. Si la llama fluctua: regulador defectuoso. Reemplazar, no reparar.'}
+]},
+r:{l:'Encendido',c:'var(--refri-c)',p:[
+{n:11,t:'Electrodo de chispa (ignitor)',d:'Ceramica con punta metalica que genera arco electrico para encender el gas. Distancia de chispa: 3-4mm desde la corona del quemador. Si no genera chispa: punta sucia (limpiar con lija 400), ceramica rota o cable desconectado. No debe estar mojado. Si la chispa es debil y anaranjada: desgaste de punta.'},
+{n:12,t:'Modulo generador de chispa',d:'Unidad electronica que genera pulsos de alto voltaje (15-20 kV) para los electrodos. Alimentacion: 110/220V AC o bateria (encendido a pila). Si ningun quemador hace chispa: modulo danado. Si solo uno falla: problema en cable o electrodo individual. Medir voltaje de salida con tester de chispa, nunca con multimetro comun.'},
+{n:13,t:'Cable de alta tension',d:'Conductor aislado que lleva el pulso de alto voltaje del modulo al electrodo. Aislamiento de silicona resistente a calor. Si hay chispa errante o arco al chasis: aislamiento perforado. Revisar recorrido: no debe tocar partes metalicas ni estar cerca de manguera de gas. Reemplazar si el aislamiento esta endurecido o agrietado.'},
+{n:14,t:'Termopar/termocopla',d:'Sensor bimetalico (cromel-alumel tipo K) que detecta presencia de llama generando 20-30 mV DC cuando se calienta. Si el quemador se apaga solo al soltar la perilla: termopar sucio, desalineado o agotado. Medir con multimetro en mV DC. Respuesta: debe alcanzar >15 mV en 30 segundos. Limpiar con lana de acero fina.'},
+{n:15,t:'Valvula de seguridad termoelectrica',d:'Solenoide que se mantiene abierta con la corriente del termopar. Si la llama se apaga, el termopar se enfria, la corriente cesa y la valvula corta el gas en ~60 segundos. Bobina tipica: 15-50 ohm. Si no retiene: bobina abierta (medir con multimetro) o mecanismo atascado. Nunca puentear esta valvula de seguridad.'}
+]},
+s:{l:'Estructura',c:'var(--sist-c)',p:[
+{n:16,t:'Marco perimetral',d:'Moldura de acero inoxidable o aluminio que rodea la cubierta y la fija a la mesada. Ancho tipico: 5-15mm. Funcion: proteger bordes del vidrio y dar acabado estetico. Si esta deformado: la cubierta no sella correctamente contra la mesada. Verificar que los clips de sujecion esten completos al reinstalar.'},
+{n:17,t:'Charola recolectora de derrames',d:'Bandeja metalica bajo la cubierta que recoge liquidos derramados. Material: acero galvanizado o aluminio. Si no se limpia: corrosion y malos olores. Acceso: levantar la cubierta o desmontar por debajo. Limpiar con desengrasante y secar completamente. Verificar que el drenaje no este obstruido.'},
+{n:18,t:'Manguera de conexion',d:'Conducto flexible que conecta la red de gas con la entrada de la cubierta. Material aprobado: acero inoxidable corrugado (vida util 10+ anos) o caucho reforzado con malla (vencimiento impreso, tipico 5 anos). Largo maximo: 1.5m. NUNCA usar manguera vencida. Verificar estado de empaques y abrazaderas en cada servicio.'},
+{n:19,t:'Abrazaderas de sujecion',d:'Grapas o clips metalicos que fijan la cubierta al hueco de la mesada. Tipicamente 4-6 unidades con tornillo de apriete. Torque recomendado: ajustar firme sin deformar la mesada. Si faltan abrazaderas la cubierta puede levantarse con el peso de una olla. Al reinstalar, distribuir uniformemente alrededor del perimetro.'},
+{n:20,t:'Empaques y sellos',d:'Juntas de goma, teflón o fibra en todas las conexiones de gas. Incluye: empaque de la entrada principal, o-rings de valvulas, cinta teflon en roscas NPT. Vida util variable segun material y temperatura. En cada servicio: revisar todos los empaques visualmente y con prueba de jabon. Reemplazar cualquiera que este endurecido, aplastado o agrietado.'}
+]}
+};
+const K=['e','c','r','s'];
+let cur='e';
+function init(){
+document.getElementById('tb').innerHTML=K.map(k=>'<button class="tab'+(k===cur?' on':'')+'" data-k="'+k+'" onclick="sh(\''+k+'\')">'+D[k].l+'</button>').join('');
+sh('e');
+}
+function sh(k){
+cur=k;
+document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',K[i]===k)});
+const c=document.getElementById('cards');
+const s=D[k];
+c.innerHTML=s.p.map((p,i)=>'<div class="card" ontouchstart="hi(\''+k+'\','+i+')" ontouchend="lo()" onmouseenter="hi(\''+k+'\','+i+')" onmouseleave="lo()"><div class="card-head"><span class="badge" style="background:'+s.c+'">'+p.n+'</span><span class="card-title">'+p.t+'</span></div><div class="card-desc">'+p.d+'</div></div>').join('');
+lo();
+}
+function hi(k,i){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===k&&parseInt(g.dataset.i)===i){g.classList.remove('dim');g.classList.add('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+function lo(){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===cur){g.classList.remove('dim');g.classList.remove('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+init();
+</script>
+
+<div style="text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+  <a href="nevera.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Ver Nevera
+  </a>
+  <a href="lavadora.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;transition:all 0.15s;">
+    Ver Lavadora
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </a>
+</div>
+
+</body>
+</html>
