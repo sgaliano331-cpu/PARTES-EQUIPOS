@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lavadora Carga Superior - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --ext-c: #7c3aed;
+  --ext-bg: #f5f3ff;
+  --lav-c: #2563eb;
+  --lav-bg: #eff6ff;
+  --hid-c: #059669;
+  --hid-bg: #ecfdf5;
+  --mot-c: #ea580c;
+  --mot-bg: #fff7ed;
+  --seal-c: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    --ext-c: #a78bfa;
+    --ext-bg: #1e1b33;
+    --lav-c: #60a5fa;
+    --lav-bg: #1e293b;
+    --hid-c: #34d399;
+    --hid-bg: #1a2e28;
+    --mot-c: #fb923c;
+    --mot-bg: #2a1f14;
+    --seal-c: #34d399;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  --ext-c: #a78bfa;
+  --ext-bg: #1e1b33;
+  --lav-c: #60a5fa;
+  --lav-bg: #1e293b;
+  --hid-c: #34d399;
+  --hid-bg: #1a2e28;
+  --mot-c: #fb923c;
+  --mot-bg: #2a1f14;
+  --seal-c: #34d399;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab:hover { border-color: var(--border-h); }
+.tab.on[data-k="e"] { background: var(--ext-bg); border-color: var(--ext-c); color: var(--ext-c); }
+.tab.on[data-k="l"] { background: var(--lav-bg); border-color: var(--lav-c); color: var(--lav-c); }
+.tab.on[data-k="h"] { background: var(--hid-bg); border-color: var(--hid-c); color: var(--hid-c); }
+.tab.on[data-k="m"] { background: var(--mot-bg); border-color: var(--mot-c); color: var(--mot-c); }
+.diagram { width: 100%; max-width: 520px; margin: 0 auto 20px auto; }
+.cards { display: flex; flex-direction: column; gap: 6px; }
+.card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card:hover, .card.on { border-color: var(--accent); background: var(--accent-bg); }
+.card-head { display: flex; align-items: center; gap: 10px; }
+.badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; color: var(--fg); }
+.card-desc {
+  font-size: 12.5px;
+  color: var(--fg2);
+  margin-top: 6px;
+  padding-left: 36px;
+  line-height: 1.55;
+}
+.mg { cursor: pointer; transition: opacity 0.2s; }
+.mg.dim { opacity: 0.1; }
+.mg.glow circle.mk { filter: drop-shadow(0 0 8px currentColor); }
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 8px;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.nav-link:hover { border-color: var(--accent); background: var(--accent-bg); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 6V2"/><path d="M5 10l-2-1"/><path d="M19 10l2-1"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Lavadora Carga Superior — Partes y componentes</h1>
+  <p>Guia tecnica para tecnicos especializados · 20 componentes</p>
+</div>
+
+<div class="tabs" id="tb"></div>
+
+<div class="diagram">
+<svg width="100%" viewBox="0 0 400 580" role="img">
+<title>Lavadora carga superior con partes numeradas</title>
+<desc>Diagrama tecnico de lavadora carga superior</desc>
+
+<!-- Sombra base -->
+<ellipse cx="200" cy="558" rx="100" ry="10" fill="var(--border)" opacity="0.25"/>
+
+<!-- CARCASA EXTERIOR -->
+<rect x="105" y="80" width="190" height="440" rx="8" fill="#C8CDD4" stroke="#A0A8B0" stroke-width="1.2"/>
+<!-- Reflejos laterales -->
+<rect x="105" y="80" width="10" height="440" rx="4" fill="#DEE2E8" opacity="0.5"/>
+<rect x="286" y="80" width="7" height="440" rx="3" fill="#B0B8C0" opacity="0.35"/>
+
+<!-- PANEL DE CONTROL (parte superior trasera) -->
+<rect x="105" y="60" width="190" height="50" rx="6" fill="#B0B8C0" stroke="#909AA4" stroke-width="1"/>
+<!-- Perilla ciclo -->
+<circle cx="155" cy="85" r="12" fill="#707880" stroke="#586068" stroke-width="1"/>
+<circle cx="155" cy="85" r="8" fill="#808890"/>
+<line x1="155" y1="77" x2="155" y2="73" stroke="#505860" stroke-width="1.5"/>
+<!-- Perilla temperatura -->
+<circle cx="200" cy="85" r="10" fill="#707880" stroke="#586068" stroke-width="1"/>
+<circle cx="200" cy="85" r="6" fill="#808890"/>
+<line x1="200" y1="79" x2="200" y2="75" stroke="#505860" stroke-width="1.5"/>
+<!-- Botones -->
+<rect x="230" y="78" width="18" height="14" rx="3" fill="#586068" stroke="#485058" stroke-width="0.6"/>
+<rect x="254" y="78" width="18" height="14" rx="3" fill="#586068" stroke="#485058" stroke-width="0.6"/>
+<!-- Indicadores LED -->
+<circle cx="235" cy="70" r="2" fill="#4ADE80" opacity="0.8"/>
+<circle cx="248" cy="70" r="2" fill="#FCD34D" opacity="0.6"/>
+<circle cx="261" cy="70" r="2" fill="#94A3B8" opacity="0.4"/>
+<!-- Texto panel -->
+<rect x="120" y="65" width="50" height="8" rx="2" fill="#909AA4"/>
+
+<!-- TAPA SUPERIOR -->
+<rect x="109" y="108" width="182" height="18" rx="4" fill="#D4D8DE" stroke="#B0B8C0" stroke-width="0.8"/>
+<!-- Bisagra tapa -->
+<rect x="180" y="104" width="40" height="6" rx="2" fill="#909AA4" stroke="#788088" stroke-width="0.5"/>
+<!-- Manija tapa -->
+<rect x="175" y="126" width="50" height="6" rx="3" fill="#909AA4" stroke="#788088" stroke-width="0.6"/>
+
+<!-- INTERIOR VISIBLE (tina) -->
+<rect x="120" y="132" width="160" height="300" rx="4" fill="#E8ECF0" stroke="#C0C8D0" stroke-width="0.6"/>
+
+<!-- TINA EXTERIOR (contenedor de agua) -->
+<rect x="125" y="140" width="150" height="282" rx="10" fill="#D0D4DA" stroke="#A0A8B0" stroke-width="0.8"/>
+
+<!-- CANASTA INTERIOR (tambor perforado) -->
+<rect x="135" y="150" width="130" height="260" rx="8" fill="#E0E4EA" stroke="#B0B8C0" stroke-width="0.8"/>
+<!-- Perforaciones del tambor -->
+<circle cx="155" cy="180" r="2" fill="#C0C8D0"/><circle cx="175" cy="175" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="180" r="2" fill="#C0C8D0"/><circle cx="215" cy="175" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="180" r="2" fill="#C0C8D0"/><circle cx="250" cy="185" r="2" fill="#C0C8D0"/>
+<circle cx="155" cy="220" r="2" fill="#C0C8D0"/><circle cx="175" cy="225" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="220" r="2" fill="#C0C8D0"/><circle cx="215" cy="225" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="220" r="2" fill="#C0C8D0"/><circle cx="250" cy="215" r="2" fill="#C0C8D0"/>
+<circle cx="155" cy="260" r="2" fill="#C0C8D0"/><circle cx="175" cy="265" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="260" r="2" fill="#C0C8D0"/><circle cx="215" cy="265" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="260" r="2" fill="#C0C8D0"/><circle cx="250" cy="255" r="2" fill="#C0C8D0"/>
+<circle cx="155" cy="300" r="2" fill="#C0C8D0"/><circle cx="175" cy="305" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="300" r="2" fill="#C0C8D0"/><circle cx="215" cy="305" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="300" r="2" fill="#C0C8D0"/><circle cx="250" cy="295" r="2" fill="#C0C8D0"/>
+<circle cx="155" cy="340" r="2" fill="#C0C8D0"/><circle cx="175" cy="345" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="340" r="2" fill="#C0C8D0"/><circle cx="215" cy="345" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="340" r="2" fill="#C0C8D0"/><circle cx="250" cy="335" r="2" fill="#C0C8D0"/>
+<circle cx="155" cy="380" r="2" fill="#C0C8D0"/><circle cx="175" cy="385" r="2" fill="#C0C8D0"/>
+<circle cx="195" cy="380" r="2" fill="#C0C8D0"/><circle cx="215" cy="385" r="2" fill="#C0C8D0"/>
+<circle cx="235" cy="380" r="2" fill="#C0C8D0"/>
+
+<!-- AGITADOR central -->
+<rect x="185" y="200" width="30" height="190" rx="6" fill="#909AA4" stroke="#707880" stroke-width="1"/>
+<!-- Aspas del agitador -->
+<path d="M188 240 L170 235 L170 245 Z" fill="#808890"/>
+<path d="M212 240 L230 235 L230 245 Z" fill="#808890"/>
+<path d="M188 300 L170 295 L170 305 Z" fill="#808890"/>
+<path d="M212 300 L230 295 L230 305 Z" fill="#808890"/>
+<path d="M188 360 L170 355 L170 365 Z" fill="#808890"/>
+<path d="M212 360 L230 355 L230 365 Z" fill="#808890"/>
+<!-- Tapa del agitador -->
+<circle cx="200" cy="208" r="10" fill="#808890" stroke="#687078" stroke-width="0.8"/>
+<circle cx="200" cy="208" r="5" fill="#707880"/>
+
+<!-- DISPENSADOR de detergente (esquina interior) -->
+<rect x="138" y="153" width="35" height="22" rx="3" fill="#C8D0D8" stroke="#A0A8B0" stroke-width="0.6"/>
+<text x="155" y="167" text-anchor="middle" font-size="6" fill="#8494a7" font-family="Inter, sans-serif">Detergente</text>
+
+<!-- FILTRO de pelusa (borde interior) -->
+<rect x="245" y="160" width="15" height="40" rx="3" fill="#A0A8B0" stroke="#808890" stroke-width="0.6"/>
+<line x1="248" y1="167" x2="257" y2="167" stroke="#909AA4" stroke-width="0.5"/>
+<line x1="248" y1="173" x2="257" y2="173" stroke="#909AA4" stroke-width="0.5"/>
+<line x1="248" y1="179" x2="257" y2="179" stroke="#909AA4" stroke-width="0.5"/>
+<line x1="248" y1="185" x2="257" y2="185" stroke="#909AA4" stroke-width="0.5"/>
+<line x1="248" y1="191" x2="257" y2="191" stroke="#909AA4" stroke-width="0.5"/>
+
+<!-- MANGUERAS traseras (entrada agua) -->
+<path d="M140 62 L140 40 L120 40 L120 25" fill="none" stroke="#4488CC" stroke-width="3" stroke-linecap="round"/>
+<path d="M175 62 L175 40 L195 40 L195 25" fill="none" stroke="#CC4444" stroke-width="3" stroke-linecap="round"/>
+<!-- Conectores de manguera -->
+<rect x="114" y="20" width="12" height="10" rx="2" fill="#808890" stroke="#687078" stroke-width="0.6"/>
+<rect x="189" y="20" width="12" height="10" rx="2" fill="#808890" stroke="#687078" stroke-width="0.6"/>
+
+<!-- VÁLVULA de entrada (detrás panel) -->
+<rect x="128" y="50" width="60" height="14" rx="3" fill="#6080A0" stroke="#486888" stroke-width="0.8"/>
+
+<!-- MANGUERA de drenaje -->
+<path d="M260 430 L290 430 L290 465 L310 465 L310 490" fill="none" stroke="#707880" stroke-width="3" stroke-linecap="round"/>
+<rect x="304" y="488" width="12" height="12" rx="2" fill="#586068" stroke="#485058" stroke-width="0.6"/>
+
+<!-- BOMBA DE DRENAJE (parte inferior) -->
+<ellipse cx="240" cy="445" rx="18" ry="12" fill="#586068" stroke="#485058" stroke-width="0.8"/>
+<text x="240" y="448" text-anchor="middle" font-size="6" fill="#B0B8C0" font-family="Inter, sans-serif">BOMBA</text>
+
+<!-- PRESOSTATO (sensor nivel agua) -->
+<circle cx="270" cy="72" r="8" fill="#586068" stroke="#485058" stroke-width="0.8"/>
+<line x1="270" y1="80" x2="270" y2="110" stroke="#586068" stroke-width="1" stroke-dasharray="2 1"/>
+
+<!-- MOTOR (parte inferior) -->
+<ellipse cx="200" cy="480" rx="35" ry="22" fill="#505860" stroke="#404850" stroke-width="1"/>
+<text x="200" y="483" text-anchor="middle" font-size="7" fill="#B0B8C0" font-family="Inter, sans-serif">MOTOR</text>
+
+<!-- CORREA de transmisión -->
+<ellipse cx="200" cy="460" rx="50" ry="8" fill="none" stroke="#404850" stroke-width="2" stroke-dasharray="4 2"/>
+
+<!-- TRANSMISIÓN / CAJA REDUCTORA -->
+<rect x="185" y="420" width="30" height="25" rx="3" fill="#687078" stroke="#505860" stroke-width="0.8"/>
+<text x="200" y="436" text-anchor="middle" font-size="5" fill="#C0C8D0" font-family="Inter, sans-serif">TRANS</text>
+
+<!-- EMBRAGUE -->
+<circle cx="200" cy="415" r="8" fill="#707880" stroke="#586068" stroke-width="0.8"/>
+<circle cx="200" cy="415" r="4" fill="#586068"/>
+
+<!-- AMORTIGUADORES / RESORTES -->
+<line x1="130" y1="430" x2="115" y2="500" stroke="#687078" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="270" y1="430" x2="285" y2="500" stroke="#687078" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Resortes superiores -->
+<path d="M130 140 L115 130 L120 120 L115 110 L120 100 L117 95" fill="none" stroke="#687078" stroke-width="1.5"/>
+<path d="M270 140 L285 130 L280 120 L285 110 L280 100 L283 95" fill="none" stroke="#687078" stroke-width="1.5"/>
+
+<!-- PATAS NIVELADORAS -->
+<rect x="125" y="520" width="14" height="18" rx="2" fill="#586068"/>
+<rect x="122" y="536" width="20" height="6" rx="3" fill="#485058"/>
+<rect x="261" y="520" width="14" height="18" rx="2" fill="#586068"/>
+<rect x="258" y="536" width="20" height="6" rx="3" fill="#485058"/>
+
+<!-- MARCADORES -->
+<g id="mk">
+<!-- Exterior: e -->
+<g class="mg" data-s="e" data-i="0"><line x1="225" y1="118" x2="320" y2="118" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="118" r="9" fill="var(--ext-c)"/><text x="332" y="122" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">1</text></g>
+<g class="mg" data-s="e" data-i="1"><line x1="275" y1="85" x2="320" y2="85" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="85" r="9" fill="var(--ext-c)"/><text x="332" y="89" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">2</text></g>
+<g class="mg" data-s="e" data-i="2"><line x1="295" y1="300" x2="320" y2="300" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="300" r="9" fill="var(--ext-c)"/><text x="332" y="304" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">3</text></g>
+<g class="mg" data-s="e" data-i="3"><line x1="135" y1="536" x2="68" y2="536" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="536" r="9" fill="var(--ext-c)"/><text x="56" y="540" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">4</text></g>
+<g class="mg" data-s="e" data-i="4"><line x1="105" y1="200" x2="68" y2="200" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="200" r="9" fill="var(--ext-c)"/><text x="56" y="204" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">5</text></g>
+
+<!-- Lavado: l -->
+<g class="mg" data-s="l" data-i="0"><line x1="200" y1="208" x2="68" y2="240" stroke="var(--lav-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="243" r="9" fill="var(--lav-c)"/><text x="56" y="247" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">6</text></g>
+<g class="mg" data-s="l" data-i="1"><line x1="135" y1="280" x2="68" y2="280" stroke="var(--lav-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="280" r="9" fill="var(--lav-c)"/><text x="56" y="284" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">7</text></g>
+<g class="mg" data-s="l" data-i="2"><line x1="125" y1="350" x2="68" y2="350" stroke="var(--lav-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="350" r="9" fill="var(--lav-c)"/><text x="56" y="354" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">8</text></g>
+<g class="mg" data-s="l" data-i="3"><line x1="260" y1="180" x2="320" y2="180" stroke="var(--lav-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="180" r="9" fill="var(--lav-c)"/><text x="332" y="184" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">9</text></g>
+<g class="mg" data-s="l" data-i="4"><line x1="173" y1="164" x2="68" y2="150" stroke="var(--lav-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="148" r="9" fill="var(--lav-c)"/><text x="56" y="152" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">10</text></g>
+
+<!-- Hidráulico: h -->
+<g class="mg" data-s="h" data-i="0"><line x1="158" y1="52" x2="68" y2="52" stroke="var(--hid-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="52" r="9" fill="var(--hid-c)"/><text x="56" y="56" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">11</text></g>
+<g class="mg" data-s="h" data-i="1"><line x1="258" y1="445" x2="320" y2="445" stroke="var(--hid-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="445" r="9" fill="var(--hid-c)"/><text x="332" y="449" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">12</text></g>
+<g class="mg" data-s="h" data-i="2"><line x1="120" y1="30" x2="68" y2="90" stroke="var(--hid-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="93" r="9" fill="var(--hid-c)"/><text x="56" y="97" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">13</text></g>
+<g class="mg" data-s="h" data-i="3"><line x1="310" y1="490" x2="320" y2="500" stroke="var(--hid-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="500" r="9" fill="var(--hid-c)"/><text x="332" y="504" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">14</text></g>
+<g class="mg" data-s="h" data-i="4"><line x1="278" y1="72" x2="320" y2="50" stroke="var(--hid-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="47" r="9" fill="var(--hid-c)"/><text x="332" y="51" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">15</text></g>
+
+<!-- Motor: m -->
+<g class="mg" data-s="m" data-i="0"><line x1="200" y1="480" x2="68" y2="480" stroke="var(--mot-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="480" r="9" fill="var(--mot-c)"/><text x="56" y="484" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">16</text></g>
+<g class="mg" data-s="m" data-i="1"><line x1="250" y1="460" x2="320" y2="405" stroke="var(--mot-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="402" r="9" fill="var(--mot-c)"/><text x="332" y="406" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">17</text></g>
+<g class="mg" data-s="m" data-i="2"><line x1="200" y1="415" x2="68" y2="415" stroke="var(--mot-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="415" r="9" fill="var(--mot-c)"/><text x="56" y="419" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">18</text></g>
+<g class="mg" data-s="m" data-i="3"><line x1="200" y1="432" x2="68" y2="448" stroke="var(--mot-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="56" cy="450" r="9" fill="var(--mot-c)"/><text x="56" y="454" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">19</text></g>
+<g class="mg" data-s="m" data-i="4"><line x1="285" y1="500" x2="320" y2="535" stroke="var(--mot-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="332" cy="538" r="9" fill="var(--mot-c)"/><text x="332" y="542" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">20</text></g>
+</g>
+</svg>
+</div>
+
+<div class="cards" id="cd"></div>
+
+<div style="text-align:center">
+  <a class="nav-link" href="nevera.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Ver Nevera
+  </a>
+</div>
+
+<script>
+const S=[
+{k:'e',t:'Exterior',c:'var(--ext-c)',items:[
+{n:'Tapa superior',d:'Cubierta abatible que da acceso al tambor. Incluye bisagra y seguro que detiene el ciclo al abrirla (switch de seguridad). Protege de salpicaduras durante el lavado.'},
+{n:'Panel de control',d:'Contiene las perillas de seleccion de ciclo y temperatura, botones de inicio/pausa e indicadores LED. Es el centro de mando de la lavadora; controla tiempos, velocidades y nivel de agua.'},
+{n:'Carcasa exterior',d:'Estructura metalica que protege todos los componentes internos. Fabricada en lamina galvanizada con pintura anticorrosiva. Soporta vibraciones del centrifugado.'},
+{n:'Patas niveladoras',d:'Cuatro patas ajustables en la base que permiten nivelar la lavadora en superficies irregulares. Una lavadora desnivelada vibra excesivamente y puede desplazarse durante el centrifugado.'},
+{n:'Tapa posterior de servicio',d:'Panel trasero removible que da acceso a la valvula de entrada, mangueras y conexiones electricas para mantenimiento y reparacion tecnica.'}
+]},
+{k:'l',t:'Sistema de lavado',c:'var(--lav-c)',items:[
+{n:'Agitador',d:'Pieza central con aspas que gira alternadamente para crear turbulencia en el agua y frotar la ropa. Es el componente principal del lavado. Se conecta al eje de la transmision.'},
+{n:'Canasta interior (tambor)',d:'Cilindro perforado de acero inoxidable donde se coloca la ropa. Los orificios permiten el paso del agua y durante el centrifugado expulsan el agua de la ropa por fuerza centrifuga.'},
+{n:'Tina exterior',d:'Recipiente hermetico que rodea la canasta interior y contiene el agua durante el ciclo de lavado. No tiene perforaciones. Esta suspendida por resortes y amortiguadores para absorber vibraciones.'},
+{n:'Filtro de pelusa',d:'Malla o trampa ubicada dentro del tambor que atrapa fibras, pelusas e hilos sueltos de la ropa durante el lavado. Debe limpiarse regularmente para evitar obstrucciones en el drenaje.'},
+{n:'Dispensador de detergente',d:'Compartimento en la parte superior del tambor donde se deposita el detergente, suavizante y blanqueador. Libera los productos en el momento adecuado del ciclo de lavado.'}
+]},
+{k:'h',t:'Sistema hidraulico',c:'var(--hid-c)',items:[
+{n:'Valvula de entrada de agua',d:'Electrovalvula que controla el ingreso de agua fria y caliente a la tina. Se abre electricamente segun la seleccion de temperatura. Tiene filtros de malla que evitan el paso de sedimentos.'},
+{n:'Bomba de drenaje',d:'Motor con impulsor que expulsa el agua sucia de la tina al desague. Funciona durante el vaciado y centrifugado. Fallas comunes: obstruccion por monedas, botones u objetos pequeños.'},
+{n:'Mangueras de entrada',d:'Dos mangueras (agua fria y caliente) que conectan la lavadora a las llaves de suministro. Llevan filtro de malla en los extremos. Deben revisarse periodicamente para evitar fugas o reventones.'},
+{n:'Manguera de drenaje',d:'Tubo corrugado flexible que conduce el agua sucia desde la bomba hasta el desague o lavadero. Debe instalarse a una altura entre 60 y 90 cm para un sifon adecuado que evite retorno de agua.'},
+{n:'Presostato (sensor de nivel)',d:'Sensor de presion de aire conectado a la tina mediante una manguerita. Detecta el nivel de agua y envia la señal a la tarjeta electronica para cerrar la valvula cuando el nivel es correcto.'}
+]},
+{k:'m',t:'Motor y transmision',c:'var(--mot-c)',items:[
+{n:'Motor electrico',d:'Motor que genera la fuerza para girar el agitador y la canasta. Tiene dos velocidades: baja para agitacion y alta para centrifugado. Puede ser de induccion o de acoplamiento directo segun el modelo.'},
+{n:'Correa de transmision',d:'Banda de caucho que transfiere el movimiento del motor a la polea de la transmision. Con el uso se estira y desgasta, causando deslizamiento y ruido. Debe reemplazarse cuando presenta grietas o se afloja.'},
+{n:'Embrague',d:'Mecanismo que acopla y desacopla el motor de la transmision. Permite la transicion suave entre lavado y centrifugado. Su desgaste causa que la lavadora no centrifugue o lo haga debilmente.'},
+{n:'Transmision (caja reductora)',d:'Conjunto de engranajes que convierte el giro continuo del motor en movimiento oscilante del agitador (lavado) y giro directo de la canasta (centrifugado). Es el componente mecanico mas complejo.'},
+{n:'Amortiguadores y resortes',d:'Sistema de suspension que absorbe las vibraciones de la tina durante el centrifugado. Los resortes superiores sostienen la tina y los amortiguadores inferiores controlan el movimiento. Su falla causa golpeteo excesivo.'}
+]}
+];
+let tab='e',hi=null;
+const $=s=>document.getElementById(s);
+function render(){
+  let h='';S.forEach(s=>{h+=`<button class="tab${s.k===tab?' on':''}" data-k="${s.k}">${s.t}</button>`;});
+  $('tb').innerHTML=h;
+  const sec=S.find(s=>s.k===tab);
+  let c='';sec.items.forEach((it,i)=>{
+    c+=`<div class="card${hi===i?' on':''}" data-i="${i}" ontouchstart="hl(${i})" ontouchend="hl(null)"><div class="card-head"><div class="badge" style="background:${sec.c}">${tab==='e'?i+1:tab==='l'?i+6:tab==='h'?i+11:i+16}</div><span class="card-title">${it.n}</span></div><div class="card-desc">${it.d}</div></div>`;
+  });
+  $('cd').innerHTML=c;
+  document.querySelectorAll('.mg').forEach(g=>{
+    const s=g.dataset.s,i=+g.dataset.i;
+    g.classList.toggle('dim',s===tab&&hi!==null&&i!==hi);
+    g.classList.toggle('glow',s===tab&&hi===i);
+    g.style.display=s===tab?'':'none';
+  });
+}
+function hl(i){hi=i;render();}
+$('tb').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b){tab=b.dataset.k;hi=null;render();}});
+$('cd').addEventListener('mouseenter',e=>{const c=e.target.closest('.card');if(c)hl(+c.dataset.i);},true);
+$('cd').addEventListener('mouseleave',e=>{if(e.target.closest('.card'))hl(null);},true);
+document.querySelectorAll('.mg').forEach(g=>{
+  g.addEventListener('mouseenter',()=>{tab=g.dataset.s;hl(+g.dataset.i);});
+  g.addEventListener('mouseleave',()=>hl(null));
+  g.addEventListener('click',()=>{tab=g.dataset.s;hl(+g.dataset.i);});
+});
+render();
+</script>
+</body>
+</html>
