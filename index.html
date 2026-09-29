@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INGETEG - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 6px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 6px 16px 6px 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.equipo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  text-decoration: none;
+  color: var(--fg);
+  transition: all 0.2s;
+}
+.equipo:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  transform: translateY(-2px);
+}
+.equipo-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.equipo-name {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+.equipo-count {
+  font-size: 11px;
+  color: var(--fg3);
+  font-weight: 500;
+}
+.i1 { background: #eff6ff; color: #2563eb; }
+.i2 { background: #f0fdf4; color: #16a34a; }
+.i3 { background: #fef3c7; color: #d97706; }
+.i4 { background: #fce7f3; color: #db2777; }
+.i5 { background: #f5f3ff; color: #7c3aed; }
+.i6 { background: #fff7ed; color: #ea580c; }
+.i7 { background: #ecfdf5; color: #059669; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .i1 { background: #1e3a5f; color: #60a5fa; }
+  :root:not([data-theme="light"]) .i2 { background: #1a3328; color: #4ade80; }
+  :root:not([data-theme="light"]) .i3 { background: #3b2a10; color: #fbbf24; }
+  :root:not([data-theme="light"]) .i4 { background: #3b1a2e; color: #f472b6; }
+  :root:not([data-theme="light"]) .i5 { background: #2a1f42; color: #a78bfa; }
+  :root:not([data-theme="light"]) .i6 { background: #3b2410; color: #fb923c; }
+  :root:not([data-theme="light"]) .i7 { background: #1a2e28; color: #34d399; }
+}
+:root[data-theme="dark"] .i1 { background: #1e3a5f; color: #60a5fa; }
+:root[data-theme="dark"] .i2 { background: #1a3328; color: #4ade80; }
+:root[data-theme="dark"] .i3 { background: #3b2a10; color: #fbbf24; }
+:root[data-theme="dark"] .i4 { background: #3b1a2e; color: #f472b6; }
+:root[data-theme="dark"] .i5 { background: #2a1f42; color: #a78bfa; }
+:root[data-theme="dark"] .i6 { background: #3b2410; color: #fb923c; }
+:root[data-theme="dark"] .i7 { background: #1a2e28; color: #34d399; }
+.footer {
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--fg3);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Partes y Componentes</h1>
+  <p>Guias tecnicas interactivas para tecnicos especializados</p>
+  <p style="margin-top:4px;font-size:12px;color:var(--fg3)">7 equipos · 140 componentes</p>
+</div>
+
+<div class="grid">
+  <a href="nevera.html" class="equipo">
+    <div class="equipo-icon i1">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="1"/><path d="M5 10h14"/><circle cx="12" cy="6" r="0.5" fill="currentColor"/><circle cx="12" cy="15" r="0.5" fill="currentColor"/></svg>
+    </div>
+    <span class="equipo-name">Nevera</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="lavadora.html" class="equipo">
+    <div class="equipo-icon i2">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="5"/><circle cx="12" cy="14" r="2"/><circle cx="8" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="5" r="1" fill="currentColor"/></svg>
+    </div>
+    <span class="equipo-name">Lavadora</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="nevecon.html" class="equipo">
+    <div class="equipo-icon i3">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="1" width="12" height="22" rx="1"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="13" x2="18" y2="13"/><line x1="6" y1="18" x2="18" y2="18"/><rect x="15" y="3" width="1.5" height="4" rx="0.5" fill="currentColor"/></svg>
+    </div>
+    <span class="equipo-name">Nevecon</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="calentador.html" class="equipo">
+    <div class="equipo-icon i4">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 20v2"/><path d="M12 20v2"/><path d="M15 20v2"/><path d="M10 4V2"/><path d="M14 4V2"/><path d="M9 11c0-1 1-2 2-1s2 0 2-1"/><path d="M13 11c0-1 1-2 2-1"/></svg>
+    </div>
+    <span class="equipo-name">Calentador</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="cubierta.html" class="equipo">
+    <div class="equipo-icon i5">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="10" rx="1"/><circle cx="8" cy="13" r="2.5"/><circle cx="16" cy="13" r="2.5"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="13" r="1"/><rect x="5" y="18" width="3" height="2" rx="0.5"/><rect x="10" y="18" width="3" height="2" rx="0.5"/><rect x="16" y="18" width="3" height="2" rx="0.5"/></svg>
+    </div>
+    <span class="equipo-name">Cubierta</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="horno.html" class="equipo">
+    <div class="equipo-icon i6">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="1"/><rect x="6" y="8" width="12" height="12" rx="1"/><line x1="6" y1="5" x2="18" y2="5"/><circle cx="8" cy="3.5" r="0.7" fill="currentColor"/><circle cx="12" cy="3.5" r="0.7" fill="currentColor"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+    </div>
+    <span class="equipo-name">Horno</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+  <a href="campana.html" class="equipo">
+    <div class="equipo-icon i7">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14h16l-2-6H6L4 14z"/><rect x="9" y="3" width="6" height="5" rx="1"/><line x1="4" y1="14" x2="20" y2="14"/><line x1="7" y1="17" x2="17" y2="17"/><path d="M8 20l-1 2"/><path d="M16 20l1 2"/></svg>
+    </div>
+    <span class="equipo-name">Campana</span>
+    <span class="equipo-count">20 componentes</span>
+  </a>
+</div>
+
+<div class="footer">
+  INGETEG Soluciones &middot; Tecnicos especializados<br>
+  Toca cualquier equipo para ver sus partes y componentes
+</div>
+
+</body>
+</html>
