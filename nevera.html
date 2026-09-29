@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nevera - Partes y Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --fg: #1a2332;
+  --fg2: #4a5568;
+  --fg3: #8494a7;
+  --border: #e2e8f0;
+  --border-h: #cbd5e1;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --ext-c: #7c3aed;
+  --ext-bg: #f5f3ff;
+  --cong-c: #2563eb;
+  --cong-bg: #eff6ff;
+  --refri-c: #059669;
+  --refri-bg: #ecfdf5;
+  --sist-c: #ea580c;
+  --sist-bg: #fff7ed;
+  --seal-c: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --bg-card: #1a2332;
+    --fg: #e8edf2;
+    --fg2: #94a3b8;
+    --fg3: #64748b;
+    --border: #2d3a4a;
+    --border-h: #3d4f63;
+    --accent: #60a5fa;
+    --accent-bg: #1e293b;
+    --accent-border: #1e3a5f;
+    --ext-c: #a78bfa;
+    --ext-bg: #1e1b33;
+    --cong-c: #60a5fa;
+    --cong-bg: #1e293b;
+    --refri-c: #34d399;
+    --refri-bg: #1a2e28;
+    --sist-c: #fb923c;
+    --sist-bg: #2a1f14;
+    --seal-c: #34d399;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --fg: #e8edf2;
+  --fg2: #94a3b8;
+  --fg3: #64748b;
+  --border: #2d3a4a;
+  --border-h: #3d4f63;
+  --accent: #60a5fa;
+  --accent-bg: #1e293b;
+  --accent-border: #1e3a5f;
+  --ext-c: #a78bfa;
+  --ext-bg: #1e1b33;
+  --cong-c: #60a5fa;
+  --cong-bg: #1e293b;
+  --refri-c: #34d399;
+  --refri-bg: #1a2e28;
+  --sist-c: #fb923c;
+  --sist-bg: #2a1f14;
+  --seal-c: #34d399;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--fg3);
+}
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab:hover { border-color: var(--border-h); }
+.tab.on[data-k="e"] { background: var(--ext-bg); border-color: var(--ext-c); color: var(--ext-c); }
+.tab.on[data-k="c"] { background: var(--cong-bg); border-color: var(--cong-c); color: var(--cong-c); }
+.tab.on[data-k="r"] { background: var(--refri-bg); border-color: var(--refri-c); color: var(--refri-c); }
+.tab.on[data-k="s"] { background: var(--sist-bg); border-color: var(--sist-c); color: var(--sist-c); }
+.diagram { width: 100%; max-width: 520px; margin: 0 auto 20px auto; }
+.cards { display: flex; flex-direction: column; gap: 6px; }
+.card {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card:hover, .card.on { border-color: var(--accent); background: var(--accent-bg); }
+.card-head { display: flex; align-items: center; gap: 10px; }
+.badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; color: var(--fg); }
+.card-desc {
+  font-size: 12.5px;
+  color: var(--fg2);
+  margin-top: 6px;
+  padding-left: 36px;
+  line-height: 1.55;
+}
+.mg { cursor: pointer; transition: opacity 0.2s; }
+.mg.dim { opacity: 0.1; }
+.mg.glow circle.mk { filter: drop-shadow(0 0 8px currentColor); }
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M4 10h16"/><circle cx="12" cy="6" r="1"/><circle cx="12" cy="15" r="1"/></svg>
+    INGETEG Soluciones
+  </div>
+  <h1>Nevera — Partes y componentes</h1>
+  <p>Guia tecnica para tecnicos especializados · 20 componentes</p>
+</div>
+
+<div class="tabs" id="tb"></div>
+
+<div class="diagram">
+<svg width="100%" viewBox="0 0 400 560" role="img">
+<title>Nevera con partes numeradas</title>
+<desc>Diagrama tecnico de nevera para tecnicos</desc>
+
+<ellipse cx="200" cy="538" rx="90" ry="8" fill="var(--border)" opacity="0.25"/>
+
+<rect x="110" y="20" width="180" height="510" rx="5" fill="#CDD2D8" stroke="#A0A8B0" stroke-width="1.2"/>
+<rect x="110" y="20" width="9" height="510" rx="3" fill="#DEE2E8" opacity="0.6"/>
+<rect x="282" y="20" width="6" height="510" rx="2" fill="#B0B8C0" opacity="0.4"/>
+
+<rect x="114" y="24" width="172" height="148" rx="3" fill="#BFC5CC" stroke="#9098A0" stroke-width="0.8"/>
+<rect x="120" y="30" width="160" height="136" rx="2" fill="none" stroke="#A8B0B8" stroke-width="0.4"/>
+<rect x="270" y="70" width="7" height="55" rx="3.5" fill="#808890" stroke="#687078" stroke-width="0.4"/>
+<rect x="271.5" y="73" width="2.5" height="49" rx="1.5" fill="#98A0A8" opacity="0.5"/>
+
+<line x1="114" y1="174" x2="286" y2="174" stroke="#808890" stroke-width="1.5"/>
+
+<rect x="114" y="177" width="172" height="348" rx="3" fill="#BFC5CC" stroke="#9098A0" stroke-width="0.8"/>
+<rect x="120" y="183" width="160" height="336" rx="2" fill="none" stroke="#A8B0B8" stroke-width="0.4"/>
+<rect x="270" y="300" width="7" height="70" rx="3.5" fill="#808890" stroke="#687078" stroke-width="0.4"/>
+<rect x="271.5" y="303" width="2.5" height="64" rx="1.5" fill="#98A0A8" opacity="0.5"/>
+
+<rect x="165" y="215" width="70" height="40" rx="3" fill="#98A0A8" stroke="#788088" stroke-width="0.6"/>
+<rect x="175" y="222" width="50" height="10" rx="2" fill="#687078"/>
+<rect x="188" y="238" width="24" height="12" rx="2" fill="#586068"/>
+
+<rect x="118" y="28" width="164" height="140" rx="2" fill="var(--bg-card)" opacity="0.3"/>
+<path d="M130 42 L270 42 L270 49 L130 49 L130 56 L270 56 L270 63 L130 63" fill="none" stroke="#4488CC" stroke-width="1.2" opacity="0.5"/>
+<circle cx="200" cy="82" r="13" fill="none" stroke="#4488CC" stroke-width="0.8" opacity="0.5"/>
+<line x1="191" y1="73" x2="209" y2="91" stroke="#4488CC" stroke-width="0.8" opacity="0.5"/>
+<line x1="209" y1="73" x2="191" y2="91" stroke="#4488CC" stroke-width="0.8" opacity="0.5"/>
+<line x1="125" y1="105" x2="275" y2="105" stroke="#7888A0" stroke-width="1.2"/>
+<rect x="140" y="120" width="120" height="35" rx="2" fill="none" stroke="#7888A0" stroke-width="0.8"/>
+<text x="200" y="142" text-anchor="middle" font-size="8" fill="#7888A0" font-family="Inter, sans-serif">Hielo</text>
+
+<rect x="118" y="180" width="164" height="342" rx="2" fill="var(--bg-card)" opacity="0.2"/>
+<rect x="125" y="186" width="40" height="4" rx="2" fill="#FFE066" opacity="0.6"/>
+<line x1="125" y1="280" x2="275" y2="280" stroke="#7888A0" stroke-width="1"/>
+<line x1="125" y1="330" x2="275" y2="330" stroke="#7888A0" stroke-width="1"/>
+<line x1="125" y1="380" x2="275" y2="380" stroke="#7888A0" stroke-width="1"/>
+<rect x="265" y="200" width="14" height="80" rx="1.5" fill="none" stroke="#7888A0" stroke-width="0.6"/>
+<rect x="265" y="310" width="14" height="55" rx="1.5" fill="none" stroke="#7888A0" stroke-width="0.6"/>
+<rect x="128" y="400" width="144" height="38" rx="2" fill="none" stroke="#7888A0" stroke-width="0.8"/>
+<rect x="128" y="445" width="144" height="38" rx="2" fill="none" stroke="#7888A0" stroke-width="0.8"/>
+<text x="200" y="423" text-anchor="middle" font-size="7" fill="#7888A0" font-family="Inter, sans-serif">Frutas</text>
+<text x="200" y="468" text-anchor="middle" font-size="7" fill="#7888A0" font-family="Inter, sans-serif">Verduras</text>
+
+<rect x="112" y="175" width="176" height="352" rx="4" fill="none" stroke="var(--seal-c)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4"/>
+
+<ellipse cx="160" cy="510" rx="25" ry="15" fill="#505860" stroke="#404850" stroke-width="0.8"/>
+<text x="160" y="513" text-anchor="middle" font-size="6" fill="#B0B8C0" font-family="Inter, sans-serif">COMPRESOR</text>
+<path d="M210 498 L270 498 L270 504 L210 504 L210 510 L270 510 L270 516 L210 516 L210 522 L270 522" fill="none" stroke="#404850" stroke-width="1.2"/>
+<circle cx="240" cy="488" r="10" fill="none" stroke="#586068" stroke-width="0.8"/>
+<rect x="125" y="528" width="150" height="5" rx="1.5" fill="#A09080" stroke="#908070" stroke-width="0.4"/>
+<rect x="130" y="532" width="10" height="11" rx="1.5" fill="#586068"/>
+<rect x="260" y="532" width="10" height="11" rx="1.5" fill="#586068"/>
+
+<g id="mk">
+<g class="mg" data-s="e" data-i="0"><line x1="278" y1="97" x2="310" y2="97" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="97" r="9" fill="var(--ext-c)"/><text x="320" y="101" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">1</text></g>
+<g class="mg" data-s="e" data-i="1"><line x1="278" y1="335" x2="310" y2="335" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="335" r="9" fill="var(--ext-c)"/><text x="320" y="339" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">2</text></g>
+<g class="mg" data-s="e" data-i="2"><line x1="237" y1="235" x2="310" y2="265" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="268" r="9" fill="var(--ext-c)"/><text x="320" y="272" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">3</text></g>
+<g class="mg" data-s="e" data-i="3"><line x1="112" y1="350" x2="80" y2="350" stroke="var(--seal-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="350" r="9" fill="var(--seal-c)"/><text x="70" y="354" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">4</text></g>
+<g class="mg" data-s="e" data-i="4"><line x1="130" y1="537" x2="80" y2="537" stroke="var(--ext-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="537" r="9" fill="var(--ext-c)"/><text x="70" y="541" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">5</text></g>
+
+<g class="mg" data-s="c" data-i="0"><line x1="130" y1="52" x2="80" y2="52" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="52" r="9" fill="var(--cong-c)"/><text x="70" y="56" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">6</text></g>
+<g class="mg" data-s="c" data-i="1"><line x1="187" y1="82" x2="80" y2="82" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="82" r="9" fill="var(--cong-c)"/><text x="70" y="86" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">7</text></g>
+<g class="mg" data-s="c" data-i="2"><line x1="125" y1="105" x2="80" y2="112" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="114" r="9" fill="var(--cong-c)"/><text x="70" y="118" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">8</text></g>
+<g class="mg" data-s="c" data-i="3"><line x1="140" y1="137" x2="80" y2="144" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="146" r="9" fill="var(--cong-c)"/><text x="70" y="150" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">9</text></g>
+<g class="mg" data-s="c" data-i="4"><line x1="270" y1="42" x2="310" y2="42" stroke="var(--cong-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="42" r="9" fill="var(--cong-c)"/><text x="320" y="46" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">10</text></g>
+
+<g class="mg" data-s="r" data-i="0"><line x1="125" y1="188" x2="80" y2="195" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="197" r="9" fill="var(--refri-c)"/><text x="70" y="201" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">11</text></g>
+<g class="mg" data-s="r" data-i="1"><line x1="125" y1="280" x2="80" y2="260" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="256" r="9" fill="var(--refri-c)"/><text x="70" y="260" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">12</text></g>
+<g class="mg" data-s="r" data-i="2"><line x1="280" y1="240" x2="310" y2="200" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="196" r="9" fill="var(--refri-c)"/><text x="320" y="200" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">13</text></g>
+<g class="mg" data-s="r" data-i="3"><line x1="128" y1="420" x2="80" y2="420" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="420" r="9" fill="var(--refri-c)"/><text x="70" y="424" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">14</text></g>
+<g class="mg" data-s="r" data-i="4"><line x1="275" y1="380" x2="310" y2="400" stroke="var(--refri-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="403" r="9" fill="var(--refri-c)"/><text x="320" y="407" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">15</text></g>
+
+<g class="mg" data-s="s" data-i="0"><line x1="135" y1="510" x2="80" y2="480" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="70" cy="476" r="9" fill="var(--sist-c)"/><text x="70" y="480" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">16</text></g>
+<g class="mg" data-s="s" data-i="1"><line x1="185" y1="510" x2="310" y2="468" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="465" r="9" fill="var(--sist-c)"/><text x="320" y="469" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">17</text></g>
+<g class="mg" data-s="s" data-i="2"><line x1="272" y1="510" x2="310" y2="503" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="501" r="9" fill="var(--sist-c)"/><text x="320" y="505" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">18</text></g>
+<g class="mg" data-s="s" data-i="3"><line x1="250" y1="488" x2="310" y2="435" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="432" r="9" fill="var(--sist-c)"/><text x="320" y="436" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">19</text></g>
+<g class="mg" data-s="s" data-i="4"><line x1="200" y1="530" x2="310" y2="537" stroke="var(--sist-c)" stroke-width="0.8" stroke-dasharray="2"/><circle class="mk" cx="320" cy="537" r="9" fill="var(--sist-c)"/><text x="320" y="541" text-anchor="middle" font-size="9" fill="#fff" font-weight="600" font-family="Inter, sans-serif">20</text></g>
+</g>
+</svg>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<script>
+const D={
+e:{l:'Exterior',c:'var(--ext-c)',p:[
+{n:1,t:'Manija congelador',d:'Abre la puerta superior. Fabricada en acero o plastico ABS. Si se afloja: revisar los 2 tornillos ocultos de fijacion interna.'},
+{n:2,t:'Manija refrigerador',d:'Abre la puerta inferior principal. Soporta uso diario intenso. Verificar que los insertos roscados no esten barridos.'},
+{n:3,t:'Dispensador agua/hielo',d:'Dispensa agua filtrada y cubos sin abrir la puerta. Tiene valvula solenoide, filtro y motor triturador. Si no dispensa: revisar filtro tapado y presion minima 20 PSI.'},
+{n:4,t:'Empaque magnetico (burlete)',d:'Sello de goma con iman en todo el borde de la puerta. Mantiene el frio adentro. Prueba: cerrar con un billete, si se desliza hay que cambiarlo. Limpiar con agua tibia y jabon.'},
+{n:5,t:'Patas niveladoras',d:'Ajustan altura para que las puertas cierren por gravedad. La nevera debe inclinarse ~5mm hacia atras. Llave de 13mm para ajustar.'}
+]},
+c:{l:'Congelador',c:'var(--cong-c)',p:[
+{n:6,t:'Evaporador (serpentin)',d:'Tuberia aluminio/cobre donde el refrigerante se evapora y absorbe calor. Enfria a -18°C. Si se forma bloque de hielo: resistencia de descongelamiento, bimetalico o timer estan fallando.'},
+{n:7,t:'Ventilador evaporador',d:'Motor fan que distribuye aire frio hacia ambos compartimentos. Si hace ruido: eje desgastado o aspas rozan hielo. Si no gira: motor quemado. Medir continuidad con multimetro.'},
+{n:8,t:'Bandejas / parrillas',d:'Estantes de vidrio templado o rejilla. No cubrir completamente para no bloquear flujo de aire frio.'},
+{n:9,t:'Gaveta fabricador de hielo',d:'Bandeja con mecanismo automatico: motor, valvula de agua, sensor optico. Si no hace hielo: verificar 120V en valvula de agua y presion suficiente.'},
+{n:10,t:'Sensor temperatura (termistor)',d:'Sensor NTC que mide temperatura y envia señal a la tarjeta. Resistencia tipica: 5kΩ a 25°C. Si falla: congela de mas o no enfria.'}
+]},
+r:{l:'Refrigerador',c:'var(--refri-c)',p:[
+{n:11,t:'Luz LED interior',d:'Ilumina al abrir la puerta. Activada por door switch. Si no enciende: medir continuidad del switch con multimetro y verificar modulo LED.'},
+{n:12,t:'Parrillas vidrio templado',d:'Soportan 15-20 kg. No bloquear las rejillas de ventilacion traseras del compartimento para mantener circulacion de aire.'},
+{n:13,t:'Anaqueles de la puerta',d:'Estantes para botellas y condimentos. Zona mas caliente (8-10°C) por apertura frecuente. No guardar lacteos ni carnes.'},
+{n:14,t:'Cajones crisper (verduras)',d:'Gavetas con regulador de humedad. Cerrado = alta humedad (verduras hoja). Abierto = baja humedad (frutas). Temp ideal: 2-4°C.'},
+{n:15,t:'Damper / ventilador',d:'Compuerta motorizada que regula aire frio desde el congelador al refri. Si no enfria abajo pero arriba si: damper cerrado o motor del ventilador fallando.'}
+]},
+s:{l:'Sistema de frio',c:'var(--sist-c)',p:[
+{n:16,t:'Compresor hermetico',d:'Motor sellado que comprime gas refrigerante (R134a/R600a). 100-250W. Si hace click y no arranca: revisar relay y protector termico. Medir bobinas con multimetro (comun, arranque, marcha).'},
+{n:17,t:'Relay + protector termico',d:'Relay PTC arranca el compresor. Protector bimetalico lo apaga si sobrecalienta (>130°C). Si la nevera hace click cada 3-5 min: estos son los primeros sospechosos. Se cambian juntos.'},
+{n:18,t:'Condensador (serpentin)',d:'Tuberia negra trasera/inferior donde el gas se enfria y vuelve liquido. Si esta sucio la nevera no enfria. Limpiar con cepillo cada 6 meses. Temp salida normal: 45-55°C.'},
+{n:19,t:'Ventilador condensador',d:'Fuerza aire sobre el condensador inferior. Si falla, el compresor se sobrecalienta y el protector lo apaga repetidamente. Solo en modelos con condensador oculto.'},
+{n:20,t:'Bandeja de drenaje',d:'Recoge agua del descongelamiento. Se evapora con calor del compresor. Si huele mal: limpiar con agua y vinagre. Si derrama: manguera de drenaje tapada.'}
+]}
+};
+const K=['e','c','r','s'];
+let cur='e';
+function init(){
+document.getElementById('tb').innerHTML=K.map(k=>'<button class="tab'+(k===cur?' on':'')+'" data-k="'+k+'" onclick="sh(\''+k+'\')">'+D[k].l+'</button>').join('');
+sh('e');
+}
+function sh(k){
+cur=k;
+document.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('on',K[i]===k)});
+const c=document.getElementById('cards');
+const s=D[k];
+c.innerHTML=s.p.map((p,i)=>'<div class="card" ontouchstart="hi(\''+k+'\','+i+')" ontouchend="lo()" onmouseenter="hi(\''+k+'\','+i+')" onmouseleave="lo()"><div class="card-head"><span class="badge" style="background:'+s.c+'">'+p.n+'</span><span class="card-title">'+p.t+'</span></div><div class="card-desc">'+p.d+'</div></div>').join('');
+lo();
+}
+function hi(k,i){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===k&&parseInt(g.dataset.i)===i){g.classList.remove('dim');g.classList.add('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+function lo(){
+document.querySelectorAll('.mg').forEach(g=>{
+if(g.dataset.s===cur){g.classList.remove('dim');g.classList.remove('glow');}
+else{g.classList.add('dim');g.classList.remove('glow');}
+});
+}
+init();
+</script>
+
+</body>
+</html>
